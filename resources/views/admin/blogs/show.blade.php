@@ -1,7 +1,7 @@
 @extends('admin.templates.show')
 
 @push('styles')
-<!-- Add any styles if needed -->
+    <!-- Add any styles if needed -->
 @endpush
 
 @section('form_content')
@@ -48,13 +48,13 @@
                     <label for=""><span class="show-text">Status:</span></label><br>
                 </div>
                 <div class="col-md-8">
-                    {{ $item->status == 'active' ? 'Active' : 'Inactive' }}
+                    {{ $item->status }}
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            @if($item->getImage())
+            @if ($item->getImage())
                 <img src="{{ $item->getImage() }}" alt="Image" width="50%">
             @else
                 <p>No image available</p>

@@ -32,17 +32,20 @@ class BaseModel extends Model implements HasMedia
     function getImage($collectionName = null)
     {
         if ($collectionName) {
-            if (count($this->getMedia($collectionName)) == 0) return null;
+            if (count($this->getMedia($collectionName)) == 0)
+                return null;
             return $this->getFirstMediaUrl($collectionName ?? null);
         } else {
-            if (count($this->getMedia()) == 0) return null;
+            if (count($this->getMedia()) == 0)
+                return null;
             return $this->getFirstMediaUrl() ?? null;
         }
     }
 
     function getImageByIndex($index = 0)
     {
-        if (count($this->getMedia()) == 0) return null;
+        if (count($this->getMedia()) == 0)
+            return null;
         try {
             return $this->getMedia()[$index]->getUrl() ?? null;
         } catch (\Exception $e) {
@@ -54,10 +57,12 @@ class BaseModel extends Model implements HasMedia
     function getThumbnail($collectionName = null)
     {
         if ($collectionName) {
-            if (count($this->getMedia($collectionName)) == 0) return null;
+            if (count($this->getMedia($collectionName)) == 0)
+                return null;
             return $this->getMedia($collectionName)->first()->getUrl('medium') ?? null;
         } else {
-            if (count($this->getMedia()) == 0) return null;
+            if (count($this->getMedia()) == 0)
+                return null;
             return $this->getMedia()->first()->getUrl('medium') ?? null;
         }
     }
