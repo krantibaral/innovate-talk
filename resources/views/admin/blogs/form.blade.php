@@ -8,6 +8,7 @@
     <textarea name="description" id="summernote" class="form-control">{!! old('description', $item->description) !!}</textarea>
 </div>
 
+
 <div class="form-group">
     <label for="">Type *</label>
     <select class="form-control" name="type" id="type">
@@ -26,7 +27,7 @@
 
 <div class="form-group" id="summary-field" style="display: none;">
     <label for="summary">Summary *</label>
-    <textarea name="summary" rows= "8"id="summernote" class="form-control">{!! old('summary', $item->summary) !!}</textarea>
+    <textarea name="summary" rows= "8" class="form-control">{!! old('summary', $item->summary) !!}</textarea>
 
 </div>
 
@@ -41,7 +42,6 @@
 <script>
     // Toggle visibility of summary field based on selected option
     document.getElementById('type').addEventListener('change', function() {
-        // $('#summary-field #summernote-summary').summernote();
         var summaryField = document.getElementById('summary-field');
         if (this.value === 'premium') {
             summaryField.style.display = 'block';

@@ -73,31 +73,31 @@
                     }
                 },
             });
-            $('#summernote1').summernote({
-                height: 400,
-                callbacks: {
-                    onImageUpload: function(files) {
-                        for (let i = 0; i < files.length; i++) {
-                            $.upload(files[i]);
-                        }
-                    },
-                    onMediaDelete: function(target) {
-                        const src = $(target[0]).attr('src');
-                        const imageId = $(target[0]).attr('data-id');
+            // $('#summernote1').summernote({
+            //     height: 400,
+            //     callbacks: {
+            //         onImageUpload: function(files) {
+            //             for (let i = 0; i < files.length; i++) {
+            //                 $.upload(files[i]);
+            //             }
+            //         },
+            //         onMediaDelete: function(target) {
+            //             const src = $(target[0]).attr('src');
+            //             const imageId = $(target[0]).attr('data-id');
 
-                        deleteFile(imageId);
-                    }
-                },
-            });
+            //             deleteFile(imageId);
+            //         }
+            //     },
+            // });
 
             $.upload = function(file) {
                 let out = new FormData();
-                out.append("_token", "{{ csrf_token() }}")
+                out.append("_token", "{{ csrf_token() }}");
                 out.append('file', file, file.name);
 
                 $.ajax({
                     headers: {
-                        "X-CSRFToken": '{{ csrf_field() }}'
+                        "X-CSRFToken": '{{ csrf_token() }}'
                     },
                     method: 'POST',
                     url: '{{ route('uploader.store') }}',
@@ -106,6 +106,7 @@
                     processData: false,
                     data: out,
                     success: function(data) {
+                        console.log(data)
                         if (data['status']) {
                             var url = data['data']['url'];
                             var id = data['data']['id'];
@@ -114,15 +115,16 @@
                                 $image.attr('data-id', id);
                             });
                         } else {
-                            showFailedMessage()
+                            showFailedMessage();
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error(textStatus + " " + errorThrown);
-                        showFailedMessage()
+                        showFailedMessage();
                     }
                 });
-            }
+            };
+
 
             function deleteFile(id) {
                 var url = '{{ route('uploader.destroy', ':id') }}';
