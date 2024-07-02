@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('uploader', UploadController::class);
+    Route::resource('categories', CategoryController::class);
 
 });

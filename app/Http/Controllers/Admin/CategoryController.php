@@ -3,20 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
-use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
 
-class BlogController extends BaseController
+class CategoryController extends BaseController
 {
     public function __construct()
     {
-        $this->title = 'Blogs';
-        $this->resources = 'admin.blogs.';
-        $this->route = 'blogs.';
+        $this->title = 'Categories';
+        $this->resources = 'admin.categories.';
+        $this->route = 'categories.';
     }
     /**
      * Display a listing of the resource.
@@ -25,21 +24,14 @@ class BlogController extends BaseController
      */
     public function index(Request $request)
     {
-
-        // if (!auth()->user()->can('Blogs')) {
-        //     abort(403);
-        // }
-
         if ($request->ajax()) {
-            $data = Blog::orderBy('id', 'DESC')->get();
+            $data = Category::orderBy('id', 'DESC')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->editColumn('title', function ($row) {
-                    return $row->title;
+                ->editColumn('name', function ($row) {
+                    return $row->name;
                 })
-                ->editColumn('description', function ($row) {
-                    return Str::limit(strip_tags($row->description), 300, '...');
-                })
+
                 ->addColumn('action', function ($data) {
                     return view('admin.templates.index_actions', [
                         'id' => $data->id,
@@ -63,12 +55,11 @@ class BlogController extends BaseController
     public function create()
     {
 
-        // if (!auth()->user()->can('Blogs.create')) {
+        // if (!auth()->user()->can('Categorys.create')) {
         //     abort(403);
         // }
 
         $info = $this->crudInfo();
-        $info['categories'] = Category::pluck('name', 'id'); 
         return view($this->createResource(), $info);
 
     }
@@ -82,28 +73,18 @@ class BlogController extends BaseController
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'type' => 'required|in:free,premium',
-            'status' => 'required|in:active,inactive',
-            'summary' => 'nullable|string',
+            'name' => 'required',
+
         ]);
 
         $data = $request->all();
 
-        // Only include summary if the type is premium
-        if ($data['type'] === 'premium') {
-            $data['summary'] = $request->summary;
-        } else {
-            $data['summary'] = null;
-        }
 
-        $blog = new Blog($data);
-        $blog->save();
 
-        if ($request->image) {
-            $blog->addMediaFromRequest('image')->toMediaCollection();
-        }
+        $Category = new Category($data);
+        $Category->save();
+
+
 
         return redirect()->route($this->indexRoute());
     }
@@ -111,32 +92,32 @@ class BlogController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Blog  $Blog
+     * @param  \App\Models\Category  $Category
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        // if (!auth()->user()->can('Blogs.show')) {
+        // if (!auth()->user()->can('Categorys.show')) {
         //     abort(403);
         // }
         $info = $this->crudInfo();
-        $info['item'] = Blog::findOrFail($id);
+        $info['item'] = Category::findOrFail($id);
         return view($this->showResource(), $info);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Blog  $Blog
+     * @param  \App\Models\Category  $Category
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        // if (!auth()->user()->can('Blogs.edit')) {
+        // if (!auth()->user()->can('Categorys.edit')) {
         //     abort(403);
         // }
         $info = $this->crudInfo();
-        $info['item'] = Blog::findOrFail($id);
+        $info['item'] = Category::findOrFail($id);
         //        dd($info);
         return view($this->editResource(), $info);
     }
@@ -145,35 +126,24 @@ class BlogController extends BaseController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $Blog
+     * @param  \App\Models\Category  $Category
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'type' => 'required|in:free,premium',
-            'status' => 'required|in:active,inactive',
-            'summary' => 'nullable|string',
+            'name' => 'required',
+
         ]);
 
         $data = $request->all();
-        $item = Blog::findOrFail($id);
+        $item = Category::findOrFail($id);
 
-        // Only include summary if the type is premium
-        if ($data['type'] === 'premium') {
-            $data['summary'] = $request->summary;
-        } else {
-            $data['summary'] = null;
-        }
+
 
         $item->update($data);
 
-        if ($request->image) {
-            $item->clearMediaCollection();
-            $item->addMediaFromRequest('image')->toMediaCollection();
-        }
+
 
         return redirect()->route($this->indexRoute());
     }
@@ -181,16 +151,16 @@ class BlogController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Blog  $Blog
+     * @param  \App\Models\Category  $Category
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        // if (!auth()->user()->can('Blogs.delete')) {
+        // if (!auth()->user()->can('Categorys.delete')) {
         //     abort(403);
         // }
         try {
-            $item = Blog::findOrFail($id);
+            $item = Category::findOrFail($id);
             $item->clearMediaCollection();
             $item->delete();
         } catch (\Exception $e) {

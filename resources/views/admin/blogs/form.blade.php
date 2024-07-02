@@ -8,6 +8,17 @@
     <textarea name="description" id="summernote" class="form-control">{!! old('description', $item->description) !!}</textarea>
 </div>
 
+<div class="form-group">
+    <label for="">Category *</label>
+    <select class="form-control" name="category_id" id="category_id">
+        <option value="">Select Category</option>
+        @foreach ($categories as $categoryId => $categoryName)
+            <option value="{{ $categoryId }}" {{ old('category_id') == $categoryId ? 'selected' : '' }}>
+                {{ $categoryName }}
+            </option>
+        @endforeach
+    </select>
+</div>
 
 <div class="form-group">
     <label for="">Type *</label>
