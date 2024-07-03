@@ -8,16 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends BaseModel
 {
     use HasFactory;
+
     protected $guarded = ['id'];
     protected $appends = ['image_url', 'thumb_url'];
 
-    function getImageUrlAttribute()
+    public function getImageUrlAttribute()
     {
         return $this->getImage();
     }
 
-    function getThumbUrlAttribute()
+    public function getThumbUrlAttribute()
     {
         return $this->getThumbnail();
+    }
+
+    // Define the relationship with Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

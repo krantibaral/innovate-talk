@@ -25,13 +25,10 @@ class BlogController extends BaseController
      */
     public function index(Request $request)
     {
-
-        // if (!auth()->user()->can('Blogs')) {
-        //     abort(403);
-        // }
-
         if ($request->ajax()) {
-            $data = Blog::orderBy('id', 'DESC')->get();
+            // Eager load the category relationship
+            $data = Blog::with('category')->orderBy('id', 'DESC')->get();
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('title', function ($row) {
@@ -40,14 +37,17 @@ class BlogController extends BaseController
                 ->editColumn('description', function ($row) {
                     return Str::limit(strip_tags($row->description), 300, '...');
                 })
+                // Add a new column for the category name
+                ->addColumn('category', function ($row) {
+                    return $row->category ? $row->category->name : 'No Category';
+                })
                 ->addColumn('action', function ($data) {
                     return view('admin.templates.index_actions', [
                         'id' => $data->id,
                         'route' => $this->route
                     ])->render();
                 })
-
-                ->rawColumns(['action', 'name'])
+                ->rawColumns(['action', 'category'])
                 ->make(true);
         }
 
@@ -68,7 +68,7 @@ class BlogController extends BaseController
         // }
 
         $info = $this->crudInfo();
-        $info['categories'] = Category::pluck('name', 'id'); 
+        $info['categories'] = Category::pluck('name', 'id');
         return view($this->createResource(), $info);
 
     }
@@ -132,14 +132,15 @@ class BlogController extends BaseController
      */
     public function edit($id)
     {
-        // if (!auth()->user()->can('Blogs.edit')) {
-        //     abort(403);
-        // }
+
+
         $info = $this->crudInfo();
         $info['item'] = Blog::findOrFail($id);
-        //        dd($info);
+        $info['categories'] = Category::pluck('name', 'id');
+
         return view($this->editResource(), $info);
     }
+
 
     /**
      * Update the specified resource in storage.
