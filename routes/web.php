@@ -21,6 +21,7 @@ use App\Http\Controllers\FrontController;
 //     return view('welcome');
 // });
 Route::get('/', [FrontController::class, 'index'])->name('welcome');
+Route::get('/blog_details/{id}', [FrontController::class, 'blogDetails'])->name('blog_details');
 
 Auth::routes();
 

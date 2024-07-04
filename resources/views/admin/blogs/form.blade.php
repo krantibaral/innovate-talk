@@ -19,10 +19,10 @@
         @endforeach
     </select>
 </div>
-<div class="form-group">
+{{-- <div class="form-group">
     <label for="">Sub Category *</label>
     <input type="text" required class="form-control" name="sub_category" value="{{ old('sub_category', $item->sub_category) }}">
-</div>
+</div> --}}
 
 <div class="form-group">
     <label for="">Type *</label>

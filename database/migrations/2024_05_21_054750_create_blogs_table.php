@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('sub_category');
+            // $table->string('sub_category');
             $table->longText('description')->nullable();
             $table->text('summary')->nullable();
             $table->enum('type', ['free', 'premium'])->default('free');

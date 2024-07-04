@@ -38,20 +38,25 @@
                 @foreach ($blogs as $blog)
                     <article class="news__card">
                         <figure class="news__image">
-                            <!-- Assuming $blog->getFirstMediaUrl('images') gets the first image from the 'images' collection -->
-                            <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" />
+                            <a href="{{ route('blog_details', $blog->id) }}">
+                                <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" />
+                            </a>
                         </figure>
                         <hr />
                         <div class="news__card__body">
                             <p class="category">{{ $blog->category->name }}</p>
-                            <p class="news__title">
-                                {{ $blog->title }}
-                            </p>
-                            <div class="user__profile">
-                                <!-- Assuming $blog->author_image is the path to the author's image -->
-                                <img src="{{ asset('storage/' . $blog->author_image) }}"
-                                    alt="User name {{ $blog->author }}" />
-                                <p>By <span class="user__name">{{ $blog->author }}</span></p>
+                            <p class="news__title">{{ $blog->title }}</p>
+                            <div class="user__profile"
+                                style="display: flex; align-items: center; color:rgb(201, 201, 201);">
+                                @if ($blog->author_image)
+                                    <img src="{{ asset('storage/' . $blog->author_image) }}"
+                                        alt="User name {{ $blog->author }}"
+                                        style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+                                @else
+                                    <i class="fa fa-user-circle" style="font-size: 40px;"></i>
+                                @endif
+                                <p style="margin-left: 10px; color:black;">By <span
+                                        class="user__name">{{ $blog->author }}</span></p>
                             </div>
                             <p class="upload__date">
                                 <i class="fa-regular fa-calendar-days"></i>
@@ -61,15 +66,11 @@
                     </article>
                 @endforeach
 
-
                 <!-- End of news card -->
-
-
 
                 <!-- Start of aside section -->
                 <section class="category__container">
                     <h3 class="category__headline">Favorites Categories</h3>
-
                     <ul>
                         <li class="category__list">News and Launches</li>
                         <li class="category__list">Reviews</li>
@@ -82,14 +83,15 @@
                         <li class="category__list">It solutions</li>
                         <li class="category__list">Startup</li>
                     </ul>
-
                     <div class="category__advertisement__section">
-                        <img src="Images/AdvertisementBanner.jpg" alt="Advertisnemt of certain product." />
+                        <img src="Images/AdvertisementBanner.jpg" alt="Advertisement of certain product." />
                     </div>
                 </section>
             </section>
             <!-- End of aside section -->
+        </section>
     </main>
+
 
     <!-- Starting of slider section -->
     <section class="swiper mySwiper slider__container">
