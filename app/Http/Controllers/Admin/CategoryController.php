@@ -26,26 +26,25 @@ class CategoryController extends BaseController
     {
         if ($request->ajax()) {
             $data = Category::orderBy('id', 'DESC')->get();
-            return Datatables::of($data)
+            return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('name', function ($row) {
                     return $row->name;
                 })
-
                 ->addColumn('action', function ($data) {
                     return view('admin.templates.index_actions', [
                         'id' => $data->id,
                         'route' => $this->route
                     ])->render();
                 })
-
                 ->rawColumns(['action', 'name'])
                 ->make(true);
         }
 
         $info = $this->crudInfo();
-        return view($this->indexResource(), $info);
+        return view($this->indexResource(), $info); // This should return a view response
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -53,6 +52,7 @@ class CategoryController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function create()
+    
     {
 
         // if (!auth()->user()->can('Categorys.create')) {
