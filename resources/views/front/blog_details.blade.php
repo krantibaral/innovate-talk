@@ -1,21 +1,23 @@
+@extends('layouts.app')
 <!-- Blog Details -->
 <section class="blog__details__container">
     <figure class="blog__image">
-        <img src="Images/Article_image1.jpg" alt="Article_image1" />
+        <img src="{{ $article->getImage() }}" alt="{{ $article->title }}" />
     </figure>
 
     <section class="blog__details">
-        <p class="category">Technology</p>
+        <p class="category">{{ $article->category->name }}</p>
         <p class="upload__date">
             <i class="fa-regular fa-calendar-days"></i>
-            May 5th 2004
+            {{ $article->created_at->format('F jS Y') }}
         </p>
         <h2 class="blog__title">
-            How to port your web app to microsoft teams is really ready for take fight.
+            {{ $article->title }}
         </h2>
 
         <div class="user__profile">
-            <img src="Images/User-1.jpg" alt="User name Joshep Mathew" />
+            <img src="{{ asset('Images/User-1.jpg') }}" alt="User name Joshep Mathew" />
+
             <p>By <span class="user__name"> Joshep Mathew </span></p>
         </div>
 
@@ -41,58 +43,31 @@
             <div class="social__media">
                 <div class="social__card">
                     <figure class="social__image">
-                        <img src="Images/Facebook_logo.jpg" alt="Facebook logo">
+                        <img src="{{ asset('Images/Facebook_logo.jpg') }}" alt="Facebook logo">
                     </figure>
-                    <p class="share"><Span>40</Span> share</p>
+                    <p class="share"><span>40</span> share</p>
                 </div>
 
                 <div class="social__card">
                     <figure class="social__image">
-                        <img src="Images/Twitter_logo.jpg" alt="Twitter logo">
+                        <img src="{{ asset('Images/Twitter_logo.jpg') }}" alt="Twitter logo">
                     </figure>
-                    <p class="share"><Span>08</Span> Tweet</p>
-
+                    <p class="share"><span>08</span> Tweet</p>
                 </div>
 
                 <div class="social__card">
                     <figure class="social__image">
-                        <img src="Images/Youtube_logo.jpg" alt="Youtube logo">
+                        <img src="{{ asset('Images/Youtube_logo.jpg') }}" alt="Youtube logo">
                     </figure>
-                    <p class="share"><Span>20</Span> Subscriber</p>
+                    <p class="share"><span>20</span> Subscriber</p>
                 </div>
             </div>
+
         </div>
 
-        <p class="blog__description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita est, iusto illo
-            veniam odio reiciendis natus
-            incidunt consectetur. Sapiente enim earum omnis asperiores exercitationem, eaque quisquam soluta velit
-            eligendi
-            tempore blanditiis eos laborum similique dolor provident qui modi aliquam. Tempore doloremque fugit libero
-            sequi, adipisci autem iusto nisi assumenda quae modi nulla non ex repudiandae, ut repellat architecto dicta
-            obcaecati. Libero exercitationem neque inventore soluta nihil cupiditate ab earum temporibus recusandae
-            facere
-            quaerat molestias, magni asperiores eius quia ea praesentium eveniet ratione, sapiente animi quos explicabo
-            saepe nulla tempora. Sunt quam quas quidem tenetur officia repellendus eum, laudantium laborum rerum? Eos,
-            debitis pariatur ipsam odio voluptatum repellat. Maxime, illo veritatis culpa eligendi, dolores nostrum,
-            optio
-            totam repudiandae voluptatem recusandae suscipit ipsa natus laborum maiores mollitia. Reiciendis eveniet et,
-            odit impedit possimus iusto omnis aut incidunt. Facilis, ducimus illum ratione tempore minus aut tempora sed
-            exercitationem placeat ipsa, quibusdam nisi deserunt itaque, illo accusamus! Non voluptatibus sunt esse nemo
-            ab
-            exercitationem minima quaerat accusantium voluptate, praesentium quia saepe molestiae fuga, voluptas ipsum
-            accusamus. Dignissimos minus culpa, quod, repellendus pariatur sequi inventore nobis quo nam autem impedit
-            eveniet similique. Earum, ab aliquam? Voluptatum obcaecati fuga neque animi nobis inventore tenetur quidem?
-            Voluptas, illo laudantium porro magni nam fuga asperiores veritatis! Maxime, necessitatibus perferendis quo
-            iure
-            fuga distinctio rerum, magni obcaecati quaerat deleniti quasi modi assumenda praesentium repellat
-            exercitationem
-            eum, nostrum tempora illo alias. Obcaecati quae magnam adipisci incidunt odio aliquam expedita et nostrum
-            laudantium libero excepturi consequuntur, sapiente ipsum? In culpa consequatur, esse nisi tenetur enim
-            perspiciatis eligendi cumque inventore mollitia veniam, est atque. Impedit iusto consectetur doloribus quam
-            sapiente vitae quidem cupiditate laboriosam omnis natus ratione itaque, praesentium eius voluptates suscipit
-            similique dignissimos at autem corrupti tempore cumque enim dolores aliquid. Neque culpa voluptas,
-            distinctio
-            delectus quaerat itaque accusantium nam eum?</p>
+        <p class="blog__description">{!! $article->description !!}</p>
+
+
 
         <span class="quote">
             Lining concealed back zip fasten swing style high waisted double
@@ -128,14 +103,15 @@
             Visual search and fit-tech are definitely trends.</p>
 
         <div class="blog__details__image">
-            <img src="Images/Article_image2.jpg" alt="">
-            <img src="Images/Article_image3.jpg" alt="">
-            <img src="Images/Article_image4.jpg" alt="">
+            <img src="{{ asset('Images/Article_image2.jpg') }}" alt="">
+            <img src="{{ asset('Images/Article_image3.jpg') }}" alt="">
+            <img src="{{ asset('Images/Article_image4.jpg') }}" alt="">
         </div>
+
 
         <div class="advertisement__section1">
             <p class="blog__adv__title">Advertisement</p>
-            <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
+            <img src="{{ asset('Images/AdvertisementBanner.jpg')}}" alt="Advertisement Banner">
         </div>
 
         <div class="blog__tags">
@@ -149,72 +125,212 @@
             <button class="next__page">Next Post <span>Less is more</span></button>
         </div>
     </section>
+    <section class="comment__container">
+        <div class="comment__previews">
+
+          <div class="comment__card hidden">
+            <div class="comment__head">
+              <div class="user__profile">
+                <img src="Assets/Images/teamMember1.jpg" alt="User name Joshep Mathew" />
+                <div class="user__detail">
+                  <p class="user__name"> Joshep Mathew </p>
+                  <p class="comment__date">April 12, 2021</p>
+                </div>
+              </div>
+              <div class="heart__btn">
+                <spaan class="heart"></spaan>
+                <spaan class="number">15</spaan>
+              </div>
+            </div>
+
+            <div class="comment__body">
+              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum odio sed assumenda
+                recusandae hic, est provident corrupti. Nihil ex reprehenderit, quis consectetur facilis dicta commodi,
+                voluptas esse fugit iste numquam veritatis quasi eius eligendi necessitatibus dolorem odit et odio cum
+                id
+                totam? Quod voluptates non repudiandae illo inventore et accusamus.</p>
+            </div>
+          </div>
+
+          <div class="comment__card hidden">
+            <div class="comment__head">
+              <div class="user__profile">
+                <img src="Assets/Images/User-1.jpg" alt="User name Joshep Mathew" />
+                <div class="user__detail">
+                  <p class="user__name"> Joshep Mathew </p>
+                  <p class="comment__date">April 12, 2021</p>
+                </div>
+              </div>
+              <div class="heart__btn">
+                <spaan class="heart"></spaan>
+                <spaan class="number">190</spaan>
+              </div>
+            </div>
+
+            <div class="comment__body">
+              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum odio sed assumenda
+                recusandae hic, est provident corrupti. Nihil ex reprehenderit, quis consectetur facilis dicta commodi,
+                voluptas esse fugit iste numquam veritatis quasi eius eligendi necessitatibus dolorem odit et odio cum
+                id
+                totam? Quod voluptates non repudiandae illo inventore et accusamus.</p>
+            </div>
+          </div>
+
+          <div class="comment__card hidden">
+            <div class="comment__head">
+              <div class="user__profile">
+                <img src="Assets/Images/teamMember3.jpg" alt="User name Joshep Mathew" />
+                <div class="user__detail">
+                  <p class="user__name"> Joshep Mathew </p>
+                  <p class="comment__date">April 12, 2021</p>
+                </div>
+              </div>
+              <div class="heart__btn">
+                <spaan class="heart"></spaan>
+                <spaan class="number">50</spaan>
+              </div>
+            </div>
+
+            <div class="comment__body">
+              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum odio sed assumenda
+                recusandae hic, est provident corrupti. Nihil ex reprehenderit, quis consectetur facilis dicta commodi,
+                voluptas esse fugit iste numquam veritatis quasi eius eligendi necessitatibus dolorem odit et odio cum
+                id
+                totam? Quod voluptates non repudiandae illo inventore et accusamus.</p>
+            </div>
+          </div>
+
+          <div class="comment__card hidden">
+            <div class="comment__head">
+              <div class="user__profile">
+                <img src="Assets/Images/teamMember4.jpg" alt="User name Joshep Mathew" />
+                <div class="user__detail">
+                  <p class="user__name"> Joshep Mathew </p>
+                  <p class="comment__date">April 12, 2021</p>
+                </div>
+              </div>
+              <div class="heart__btn">
+                <spaan class="heart"></spaan>
+                <spaan class="number">20</spaan>
+              </div>
+            </div>
+
+            <div class="comment__body">
+              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum odio sed assumenda
+                recusandae hic, est provident corrupti. Nihil ex reprehenderit, quis consectetur facilis dicta commodi,
+                voluptas esse fugit iste numquam veritatis quasi eius eligendi necessitatibus dolorem odit et odio cum
+                id
+                totam? Quod voluptates non repudiandae illo inventore et accusamus.</p>
+            </div>
+          </div>
+
+          <div class="comment__card hidden">
+            <div class="comment__head">
+              <div class="user__profile">
+                <img src="Assets/Images/teamMember2.jpg" alt="User name Joshep Mathew" />
+                <div class="user__detail">
+                  <p class="user__name"> Joshep Mathew </p>
+                  <p class="comment__date">April 12, 2021</p>
+                </div>
+              </div>
+              <div class="heart__btn">
+                <spaan class="heart"></spaan>
+                <spaan class="number">99</spaan>
+              </div>
+            </div>
+
+            <div class="comment__body">
+              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum odio sed assumenda
+                recusandae hic, est provident corrupti. Nihil ex reprehenderit, quis consectetur facilis dicta commodi,
+                voluptas esse fugit iste numquam veritatis quasi eius eligendi necessitatibus dolorem odit et odio cum
+                id
+                totam? Quod voluptates non repudiandae illo inventore et accusamus.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment__post">
+          <h3 class="hidden">Leave your reply</h3>
+
+          <form action="">
+            <div class="user__profile">
+              <img class="hidden" src="Assets/Images/teamMember2.jpg" alt="User name Joshep Mathew" />
+              <p class="user__name hidden"> Sandesh Timilsina </p>
+            </div>
+            <textarea name="" id="" class="post__description hidden" placeholder="Leave your thoughts."
+              rows="10"></textarea>
+            <button class="post__btn hidden">Post</button>
+          </form>
+        </div>
+      </section>
+    </section>
 
     <section class="favourite__category">
         <h3 class="card__headline">Favourite Category</h3>
         <section class="category__list">
             <figure>
                 <a href="#">
-                    <img src="Images/sports.jpg" alt="">
+                    <img src="{{asset('Images/sports.jpg')}}" alt="">
                     <figcaption>Sports</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/covid.jpg" alt="">
+                    <img src="{{asset('Images/covid.jpg')}}" alt="">
                     <figcaption>Covid-19</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/journal.jpg" alt="">
+                    <img src="{{asset('Images/journal.jpg')}}" alt="">
                     <figcaption>Journal</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/beating.jpg" alt="">
+                    <img src="{{ asset('Images/beating.jpg') }}" alt="">
                     <figcaption>Beating</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/movie.jpg" alt="">
+                    <img src="{{ asset('Images/movie.jpg') }}" alt="">
                     <figcaption>Movies</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/magazine.jpg" alt="">
+                    <img src="{{ asset('Images/magazine.jpg') }}" alt="">
                     <figcaption>Magazine</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/film.jpg" alt="">
+                    <img src="{{ asset('Images/film.jpg') }}" alt="">
                     <figcaption>Films</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/games.jpg" alt="">
+                    <img src="{{ asset('Images/games.jpg') }}" alt="">
                     <figcaption>Games</figcaption>
                 </a>
             </figure>
 
             <figure>
                 <a href="#">
-                    <img src="Images/nature.jpg" alt="">
+                    <img src="{{ asset('Images/nature.jpg') }}" alt="">
                     <figcaption>Nature</figcaption>
                 </a>
             </figure>
+
         </section>
     </section>
 

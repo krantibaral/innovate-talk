@@ -58,8 +58,8 @@
     <!-- Swiper JS CDN-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script src="JS/jquery.min.js"></script>
-    <script src="JS/app.js"></script>
+    <script src="{{ asset('JS/jquery.min.js') }}"></script>
+    <script src="{{ asset('JS/app.js') }}"></script>
 </body>
 
 </html>
