@@ -319,15 +319,20 @@ return [
             'text' => 'Category',
             'url' => 'admin/categories',
             'icon' => 'far fa-fw fa-file',
-        
-     
+
+
         ],
         [
             'text' => 'Blogs',
             'url' => 'admin/blogs',
             'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+
+        ],
+        [
+            'text' => 'Advertisement',
+            'url' => 'admin/advertisements',
+            'icon' => 'far fa-fw fa-file',
+
         ],
         // ['header' => 'account_settings'],
         // [

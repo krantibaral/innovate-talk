@@ -48,13 +48,13 @@
                         <p class="news__title">{{ $blog->title }}</p>
                         <div class="user__profile" style="display: flex; align-items: center; color:rgb(201, 201, 201);">
                             @if ($blog->author_image)
-                                <img src="{{ asset('storage/' . $blog->author_image) }}" alt="User name {{ $blog->author }}"
+                                <img src="{{ asset('storage/' . $blog->author_image) }}" alt="User name {{ $blog->user->name }}"
                                     style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
                             @else
                                 <i class="fa fa-user-circle" style="font-size: 40px;"></i>
                             @endif
                             <p style="margin-left: 10px; color:black;">By <span
-                                    class="user__name">{{ $blog->author }}</span></p>
+                                    class="user__name">{{ $blog->user->name }}</span></p>
                         </div>
                         <p class="upload__date">
                             <i class="fa-regular fa-calendar-days"></i>

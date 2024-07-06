@@ -52,7 +52,6 @@ class CategoryController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function create()
-    
     {
 
         // if (!auth()->user()->can('Categorys.create')) {
@@ -84,7 +83,9 @@ class CategoryController extends BaseController
         $Category = new Category($data);
         $Category->save();
 
-
+        if ($request->image) {
+            $Category->addMediaFromRequest('image')->toMediaCollection();
+        }
 
         return redirect()->route($this->indexRoute());
     }
@@ -142,6 +143,10 @@ class CategoryController extends BaseController
 
 
         $item->update($data);
+        if ($request->image) {
+            $item->clearMediaCollection();
+            $item->addMediaFromRequest('image')->toMediaCollection();
+        }
 
 
 

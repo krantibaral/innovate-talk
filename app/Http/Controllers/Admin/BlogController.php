@@ -18,6 +18,7 @@ class BlogController extends BaseController
         $this->resources = 'admin.blogs.';
         $this->route = 'blogs.';
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -62,7 +63,6 @@ class BlogController extends BaseController
      */
     public function create()
     {
-
         // if (!auth()->user()->can('Blogs.create')) {
         //     abort(403);
         // }
@@ -70,7 +70,6 @@ class BlogController extends BaseController
         $info = $this->crudInfo();
         $info['categories'] = Category::pluck('name', 'id');
         return view($this->createResource(), $info);
-
     }
 
     /**
@@ -98,6 +97,8 @@ class BlogController extends BaseController
             $data['summary'] = null;
         }
 
+        $data['user_id'] = Auth::id(); // Assign the authenticated user's ID
+
         $blog = new Blog($data);
         $blog->save();
 
@@ -120,9 +121,10 @@ class BlogController extends BaseController
         //     abort(403);
         // }
         $info = $this->crudInfo();
-        $info['item'] = Blog::findOrFail($id);
+        $info['item'] = Blog::with(['user', 'category'])->findOrFail($id); 
         return view($this->showResource(), $info);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -132,15 +134,12 @@ class BlogController extends BaseController
      */
     public function edit($id)
     {
-
-
         $info = $this->crudInfo();
         $info['item'] = Blog::findOrFail($id);
         $info['categories'] = Category::pluck('name', 'id');
 
         return view($this->editResource(), $info);
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -168,6 +167,8 @@ class BlogController extends BaseController
         } else {
             $data['summary'] = null;
         }
+
+        $data['user_id'] = Auth::id(); // Assign the authenticated user's ID
 
         $item->update($data);
 

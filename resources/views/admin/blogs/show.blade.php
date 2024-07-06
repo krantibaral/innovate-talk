@@ -51,6 +51,22 @@
                     {{ $item->status }}
                 </div>
             </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label for=""><span class="show-text">Category:</span></label><br>
+                </div>
+                <div class="col-md-8">
+                    {{ $item->category->name }}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-3">
+                    <label for=""><span class="show-text">Published by:</span></label><br>
+                </div>
+                <div class="col-md-8">
+                    {{ $item->user->name }}
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4">
