@@ -79,14 +79,13 @@
                 <ul>
                     @foreach ($categories as $category)
                         {{-- <a href="{{ route('category.show', $category->id) }}"> --}}
-                            <li class="category__list hidden">{{ $category->name }}</li>
+                        <li class="category__list hidden">{{ $category->name }}</li>
                         {{-- </a> --}}
                     @endforeach
                 </ul>
 
                 <div class="category__advertisement__section hidden">
-                    <img src="Images/AdvertisementBanner.jpg" alt="Advertisement of certain product."
-                        loading="lazy" />
+                    <img src="Images/AdvertisementBanner.jpg" alt="Advertisement of certain product." loading="lazy" />
                 </div>
             </section>
             <!-- End of aside section -->

@@ -78,6 +78,8 @@ class BlogController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -97,7 +99,15 @@ class BlogController extends BaseController
             $data['summary'] = null;
         }
 
-        $data['user_id'] = Auth::id(); // Assign the authenticated user's ID
+        // Generate a unique slug
+        $slug = Str::slug($data['title']);
+        $slugCount = Blog::where('slug', 'like', $slug . '%')->count();
+        if ($slugCount > 0) {
+            $slug .= '-' . ($slugCount + 1);
+        }
+        $data['slug'] = $slug;
+
+        $data['user_id'] = Auth::id(); 
 
         $blog = new Blog($data);
         $blog->save();
@@ -108,6 +118,7 @@ class BlogController extends BaseController
 
         return redirect()->route($this->indexRoute());
     }
+
 
     /**
      * Display the specified resource.
@@ -121,7 +132,7 @@ class BlogController extends BaseController
         //     abort(403);
         // }
         $info = $this->crudInfo();
-        $info['item'] = Blog::with(['user', 'category'])->findOrFail($id); 
+        $info['item'] = Blog::with(['user', 'category'])->findOrFail($id);
         return view($this->showResource(), $info);
     }
 

@@ -5,5 +5,4 @@
     @include('admin.categories.edit')
 @endsection
 @push('scripts')
-
 @endpush
