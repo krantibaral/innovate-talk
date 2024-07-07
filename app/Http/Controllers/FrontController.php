@@ -13,9 +13,11 @@ class FrontController extends Controller
         $data['blogs'] = Blog::orderBy('created_at', 'desc')
             ->limit(3)
             ->get();
+        $data['categories'] = Category::all(); 
 
         return view('welcome', $data);
     }
+
 
     public function blogDetails($id)
     {
