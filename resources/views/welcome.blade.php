@@ -38,7 +38,7 @@
                     <!-- Starting of news card -->
                     <article class="news__card hidden">
                         <figure class="news__image">
-                            <a href="{{ route('blog_details', $blog->id) }}">
+                            <a href="{{ route('blog_details', $blog->slug) }}">
                                 <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" loading="lazy" />
                             </a>
                         </figure>
@@ -115,7 +115,7 @@
                             <i class="fa-regular fa-calendar-days"></i>
                             {{ $blog->created_at->format('F j, Y') }}
                         </p>
-                        <a href="{{ route('blog_details', $blog->id) }}">
+                        <a href="{{ route('blog_details', $blog->slug) }}">
                             <h2 class="news__slider__title">
                                 {{ $blog->title }}
                             </h2>
