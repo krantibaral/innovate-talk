@@ -112,10 +112,11 @@
         </div>
 
 
-        <div class="advertisement__section1 hidden">
-            <p class="blog__adv__title">Advertisement</p>
-            <img src="{{ asset('Images/AdvertisementBanner.jpg') }}" alt="Advertisement Banner">
-        </div>
+        <section class="advertisement__section1">
+            @foreach($advertisements as $advertisement)
+                <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" loading="lazy" />
+            @endforeach
+        </section>
 
 
         <div class="blog__tags hidden">
@@ -443,9 +444,11 @@
             </section>
     </main>
 
-    <div class="advertisement__section1 hidden">
-        <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner" loading="lazy">
-    </div>
+    <section class="advertisement__section1">
+        @foreach($advertisements as $advertisement)
+            <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" loading="lazy" />
+        @endforeach
+    </section>
 </section>
 
 <!-- Blog Details Ends -->

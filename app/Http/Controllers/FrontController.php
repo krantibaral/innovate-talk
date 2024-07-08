@@ -24,7 +24,7 @@ class FrontController extends Controller
     {
         $data['article'] = Blog::where('slug', $slug)->firstOrFail();
         $data['relatedArticles'] = Blog::where('id', '!=', $data['article']->id)->get();
-        // $data['advertisements'] = Advertise::all(); // Fetch all advertisements
+        $data['advertisements'] = Advertise::all(); // Fetch all advertisements
 
         return view('front.blog_details', $data);
     }
