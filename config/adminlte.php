@@ -318,7 +318,7 @@ return [
         [
             'text' => 'Category',
             'url' => 'admin/categories',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-th-list',
 
 
         ],
@@ -331,7 +331,7 @@ return [
         [
             'text' => 'Advertisement',
             'url' => 'admin/advertisements',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-bullhorn',
 
         ],
         // ['header' => 'account_settings'],

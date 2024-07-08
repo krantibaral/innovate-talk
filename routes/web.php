@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdvertiseController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\UploadController;
@@ -34,5 +35,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('uploader', UploadController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('advertisements', AdvertiseController::class);
 
 });

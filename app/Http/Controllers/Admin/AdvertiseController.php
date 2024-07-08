@@ -20,7 +20,7 @@ class AdvertiseController extends BaseController
     {
         $this->title = 'Advertisement';
         $this->resources = 'admin.advertisements.';
-        $this->route = 'advertisement.';
+        $this->route = 'advertisements.';
     }
     public function index(Request $request)
     {

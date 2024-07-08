@@ -17,7 +17,7 @@
             <tr class="text-left text-capitalize">
                 <th>id</th>
                 <th>title</th>
-                <th>status</th>
+                {{-- <th>status</th> --}}
                 <th>action</th>
             </tr>
             </thead>
@@ -32,11 +32,11 @@
             var table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('blogs.index') }}",
+                ajax: "{{ route('advertisements.index') }}",
                 columns: [
                     {data: 'id', name: 'DT_RowIndex'},
                     {data: 'title', name: 'title'},
-                    {data: 'status', name: 'status'},
+                    // {data: 'status', name: 'status'},
                     {data: 'action', name: 'action'},
                 ],
             });

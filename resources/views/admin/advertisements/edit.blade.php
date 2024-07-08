@@ -3,7 +3,7 @@
 @endpush
 
 @section('form_content')
-    @include('admin.blogs.form')
+    @include('admin.advertisements.form')
 @endsection
 
 @push('scripts')
