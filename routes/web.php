@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdvertiseController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\UploadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\FrontController;
 // });
 Route::get('/', [FrontController::class, 'index'])->name('welcome');
 Route::get('/blog_details/{id}', [FrontController::class, 'blogDetails'])->name('blog_details');
+Route::post('/blog/{blogId}/comment', [FrontController::class, 'postComment'])->name('blog.comment');
 
 Auth::routes();
 
@@ -36,5 +38,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('uploader', UploadController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('advertisements', AdvertiseController::class);
+    Route::resource('comments', CommentController::class);
 
 });

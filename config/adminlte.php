@@ -334,6 +334,12 @@ return [
             'icon' => 'fas fa-bullhorn',
 
         ],
+        [
+            'text' => 'Comment',
+            'url' => 'admin/comments',
+            'icon' => 'fas fa-comments',
+        ],
+
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

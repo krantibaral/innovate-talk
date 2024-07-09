@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Advertise;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -25,7 +26,29 @@ class FrontController extends Controller
         $data['article'] = Blog::where('slug', $slug)->firstOrFail();
         $data['relatedArticles'] = Blog::where('id', '!=', $data['article']->id)->get();
         $data['advertisements'] = Advertise::all(); // Fetch all advertisements
+        $data['categories'] = Category::all();
+        $data['comments'] = Comment::where('blog_id', $data['article']->id)->get();
 
         return view('front.blog_details', $data);
+    }
+
+    public function postComment(Request $request, $blogId)
+    {
+        // Validate incoming data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'text' => 'required|string',
+        ]);
+
+        // Create the comment
+        $comment = new Comment();
+        $comment->name = $request->input('name');
+        $comment->text = $request->input('text');
+        $comment->blog_id = $blogId; // Assuming comments are associated with blogs
+
+        $comment->save();
+
+
+        return redirect()->back()->with('success', 'Comment posted successfully.');
     }
 }
