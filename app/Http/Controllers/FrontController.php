@@ -17,7 +17,12 @@ class FrontController extends Controller
             ->get();
         $data['categories'] = Category::all();
         $data['advertisements'] = Advertise::all(); // Fetch all advertisements
-
+        // $data['recentlyViewedBlogs'] = Blog::whereNotNull('read_at')->orderBy('read_at', 'desc')->limit(4)->get();
+          // Fetch recently viewed blogs
+          $data['recentlyViewedBlogs'] = Blog::whereNotNull('read_at')
+          ->orderBy('read_at', 'desc')
+          ->limit(4)
+          ->get();
         return view('welcome', $data);
     }
 
@@ -27,14 +32,21 @@ class FrontController extends Controller
         $data['relatedArticles'] = Blog::where('id', '!=', $data['article']->id)->get();
         $data['advertisements'] = Advertise::all(); // Fetch all advertisements
         $data['categories'] = Category::all();
+
         $data['comments'] = Comment::where('blog_id', $data['article']->id)->get();
+
+        // Update the read_at field for the blog
+        $data['article']->read_at = now();
+        $data['article']->save();
 
         return view('front.blog_details', $data);
     }
 
+
     public function postComment(Request $request, $blogId)
     {
         // Validate incoming data
+
         $request->validate([
             'name' => 'required|string|max:255',
             'text' => 'required|string',
