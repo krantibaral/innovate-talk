@@ -1,4 +1,3 @@
-<!-- Header includes logo and navagation links -->
 <header class="navagation">
     <figure class="logo">
         <a href="{{ url('/') }}">
@@ -6,93 +5,32 @@
         </a>
     </figure>
 
-
     <hr />
 
     <input type="checkbox" id="nav_check" hidden>
     <nav class="nav__list">
         <ul>
             <li><a href="#">News & Launches</a></li>
-            <li>
-                <a href="#">Reviews
-                    <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i></a>
-                <ul class="dropdown">
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">Music</a></li>
-                    <li><a href="#">TV Shows</a>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Advice
-                    <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
+            @foreach ($categories->take(6) as $category) 
+                <li>
+                    <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
+                </li>
+            @endforeach
+            
+            @if ($categories->count() > 6) 
+                <li>
+                    <a href="#">More
+                        <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
+                    </a>
                     <ul class="dropdown">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Movies</a></li>
-                        <li><a href="#">Music</a></li>
-                        <li><a href="#">TV Shows</a></li>
-                        <li><a href="#">Gaming</a></li>
-                        <li><a href="#">PCQ 35</a></li>
-                        <li><a href="#">Communities</a></li>
-                        <li><a href="#">Mobile apps</a></li>
-                        <li><a href="#">More</a></li>
+                        @foreach ($categories->skip(6) as $category) 
+                            <li>
+                                <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
-                </a>
-            </li>
-            <li>
-                <a href="#">Tech & Trends
-                    <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
-                    <ul class="dropdown">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Movies</a></li>
-                        <li><a href="#">TV Shows</a></li>
-                        <li><a href="#">Gaming</a></li>
-                        <li><a href="#">PCQ 35</a></li>
-                        <li><a href="#">Mobile apps</a></li>
-                    </ul>
-                </a>
-            </li>
-            <li>
-                <a href="#">Gaming
-                    <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
-                    <ul class="dropdown">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Movies</a></li>
-                        <li><a href="#">TV Shows</a></li>
-                        <li><a href="#">PCQ 35</a></li>
-                        <li><a href="#">Mobile apps</a></li>
-                    </ul>
-                </a>
-            </li>
-            <li><a href="#">PCQ 35</a></li>
-            <li>
-                <a href="#">Communities
-                    <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
-                    <ul class="dropdown">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Movies</a></li>
-                        <li><a href="#">TV Shows</a></li>
-                        <li><a href="#">Gaming</a></li>
-                        <li><a href="#">PCQ 35</a></li>
-                        <li><a href="#">Mobile apps</a></li>
-                    </ul>
-                </a>
-            </li>
-            <li><a href="#">Mobile apps</a></li>
-            <li>
-                <a href="#">More
-                    <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
-                    <ul class="dropdown">
-                        <li><a href="#">Books</a></li>
-                        <li><a href="#">Movies</a></li>
-                        <li><a href="#">TV Shows</a></li>
-                        <li><a href="#">Gaming</a></li>
-                        <li><a href="#">PCQ 35</a></li>
-                        <li><a href="#">Mobile apps</a></li>
-                        <li><a href="#">More</a></li>
-                    </ul>
-                </a>
-            </li>
+                </li>
+            @endif
         </ul>
     </nav>
     <label for="nav_check" class="hamburger">

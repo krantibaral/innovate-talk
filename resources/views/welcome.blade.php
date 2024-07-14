@@ -195,6 +195,6 @@
 
 
     <!-- <section class="advertisement__section2">
-                    <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
-                </section> -->
+                        <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
+                    </section> -->
 @endsection
