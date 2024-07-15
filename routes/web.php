@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdvertiseController;
+use App\Http\Controllers\Admin\BannerBlogController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommentController;
@@ -39,5 +40,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('advertisements', AdvertiseController::class);
     Route::resource('comments', CommentController::class);
+    Route::resource('banner_blogs', BannerBlogController::class);
 
 });
