@@ -322,12 +322,12 @@ return [
 
 
         ],
-        [
-            'text' => 'Banner Blog',
-            'url' => 'admin/banner_blogs',
-            'icon' => 'far fa-fw fa-file',
+        // [
+        //     'text' => 'Banner Blog',
+        //     'url' => 'admin/banner_blogs',
+        //     'icon' => 'far fa-fw fa-file',
 
-        ],
+        // ],
         [
             'text' => 'Blogs',
             'url' => 'admin/blogs',
