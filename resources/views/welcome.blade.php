@@ -2,30 +2,33 @@
 @section('content')
     <section class="blog__preview">
         <figure class="preview__image">
-            <img src="Images/previewImage.jpg" alt="Laptop and books" />
+            <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}" loading="lazy" />
         </figure>
 
         <div class="preview__details">
-            <p class="category">Technology</p>
+            <p class="category">{{ $latestBlog->category->name }}</p>
             <p class="upload__date">
                 <i class="fa-regular fa-calendar-days"></i>
-                May 5th 2004
+                {{ $latestBlog->created_at->format('F jS, Y') }}
             </p>
-            <a href="blog_details.html">
+            <a href="{{ route('blog_details', $latestBlog->slug) }}">
                 <h2 class="preview__title">
-                    Spot Misinformation online with these tips
+                    {{ $latestBlog->title }}
                 </h2>
             </a>
             <p class="preview__description">
-                How effectively the massive shopping center can repurpose more than
-                300,000 square feet soon to be vacated.
+                {!! Str::limit($latestBlog->description, 150) !!}
             </p>
             <div class="user__profile">
-                <img src="Images/User-1.jpg" alt="User name Joshep Mathew" />
-                <p>By <span class="user__name"> Joshep Mathew </span></p>
+                <img src="{{ $latestBlog->user->profile_image ? asset('storage/' . $latestBlog->user->profile_image) : asset('Images/User-1.jpg') }}"
+                    alt="User name {{ $latestBlog->user->name }}" />
+                <p>By <span class="user__name">{{ $latestBlog->user->name }}</span></p>
             </div>
+
+            
         </div>
     </section>
+
     <!-- End of preview section -->
 
     <main class="container">
@@ -195,6 +198,6 @@
 
 
     <!-- <section class="advertisement__section2">
-                        <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
-                    </section> -->
+                                    <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
+                                </section> -->
 @endsection

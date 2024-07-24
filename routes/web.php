@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
 
@@ -41,5 +42,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('advertisements', AdvertiseController::class);
     Route::resource('comments', CommentController::class);
     Route::resource('banner_blogs', BannerBlogController::class);
+    Route::resource('users', UserController::class);
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
 });

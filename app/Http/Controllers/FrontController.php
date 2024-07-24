@@ -12,11 +12,16 @@ class FrontController extends Controller
 {
     public function index()
     {
+        // Fetch the most recent blog post
+        $data['latestBlog'] = Blog::orderBy('created_at', 'desc')
+            ->first(); // Get the latest one
         $data['blogs'] = Blog::orderBy('created_at', 'desc')
-            ->limit(3)
+            ->skip(1) // Skip the first (latest) blog post
+            ->take(3) // Take the next 3 blog posts
             ->get();
 
-        
+
+
         $data['categories'] = Category::all();
 
         $data['advertisements'] = Advertise::all(); // Fetch all advertisements

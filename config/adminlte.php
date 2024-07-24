@@ -323,27 +323,36 @@ return [
 
         ],
         [
-            'text' => 'Banner Blog',
-            'url' => 'admin/banner_blogs',
-            'icon' => 'far fa-fw fa-file',
-
-        ],
-        [
             'text' => 'Blogs',
             'url' => 'admin/blogs',
             'icon' => 'far fa-fw fa-file',
+            'can' => 'blogs'
 
         ],
         [
             'text' => 'Advertisement',
             'url' => 'admin/advertisements',
             'icon' => 'fas fa-bullhorn',
+            'can' => 'advertisements'
 
         ],
         [
             'text' => 'Comment',
             'url' => 'admin/comments',
             'icon' => 'fas fa-comments',
+            'can' => 'comments'
+        ],
+        [
+            'text' => 'Users',
+            'url' => 'admin/users',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'users'
+        ],
+        [
+            'text' => 'Profile',
+            'url' => 'admin/profile',
+            'icon' => 'fas fa-fw fa-user',
+            'can' => 'profile'
         ],
 
         // ['header' => 'account_settings'],
