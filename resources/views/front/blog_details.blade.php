@@ -66,7 +66,6 @@
                 </div>
 
             </div>
-
             <p class="blog__description hidden"> {!! $article->description !!}</p>
 
             {{-- <span class="quote hidden">

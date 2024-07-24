@@ -22,13 +22,12 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ $title }}</h3>
-                            @if(Route::currentRouteName() == 'admin.banner_blogs')
-                                <a href="{{ route($route . 'create') }}" class="btn btn-primary float-right">
-                                    <i class="fa fa-plus"></i>
-                                    <span class="kt-hidden-mobile">Add new</span>
-                                </a>
-                            @endif
+                            <h3 class="card-title">{{ $title }}</h3> <a href="{{ route($route . 'create') }}"
+                                class="btn btn-primary float-right">
+                                <i class="fa fa-plus"></i>
+                                <span class="kt-hidden-mobile">Add new</span>
+                            </a>
+
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
