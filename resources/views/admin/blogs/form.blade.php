@@ -9,11 +9,11 @@
 </div>
 
 <div class="form-group">
-    <label for="">Category *</label>
+    <label for="category_id">Category *</label>
     <select class="form-control" name="category_id" id="category_id">
         <option value="">Select Category</option>
         @foreach ($categories as $categoryId => $categoryName)
-            <option value="{{ $categoryId }}" {{ old('category_id') == $categoryId ? 'selected' : '' }}>
+            <option value="{{ $categoryId }}" {{ old('category_id', $item->category_id ?? '') == $categoryId ? 'selected' : '' }}>
                 {{ $categoryName }}
             </option>
         @endforeach

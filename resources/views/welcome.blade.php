@@ -2,8 +2,15 @@
 @section('content')
     <section class="blog__preview">
         <figure class="preview__image">
-            <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+            @if ($latestBlog->getImage())
+                <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+            @else
+                <img src="{{ asset('Images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+            @endif
+
+
         </figure>
+
 
         <div class="preview__details">
             <p class="category">{{ $latestBlog->category->name }}</p>
@@ -25,7 +32,7 @@
                 <p>By <span class="user__name">{{ $latestBlog->user->name }}</span></p>
             </div>
 
-            
+
         </div>
     </section>
 
@@ -198,6 +205,6 @@
 
 
     <!-- <section class="advertisement__section2">
-                                    <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
-                                </section> -->
+                                        <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
+                                    </section> -->
 @endsection
