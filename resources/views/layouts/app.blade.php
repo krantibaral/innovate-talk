@@ -14,7 +14,7 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <link rel="stylesheet" href="{{ asset('CSS/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css_front/style.css') }}" />
 </head>
 
 <body>
@@ -58,8 +58,8 @@
     <!-- Swiper JS CDN-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <script src="{{ asset('JS/jquery.min.js') }}"></script>
-    <script src="{{ asset('JS/app.js') }}"></script>
+    <script src="{{ asset('js_front/jquery.min.js') }}"></script>
+    <script src="{{ asset('js_front/app.js') }}"></script>
 </body>
 
 </html>
