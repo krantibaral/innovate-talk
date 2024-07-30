@@ -1,7 +1,7 @@
 <header class="navagation">
     <figure class="logo">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('/Images/blogernpLogo.png') }}" alt="logo" />
+            <img src="{{ asset('assets/images/blogernpLogo.png') }}" alt="logo" />
         </a>
     </figure>
 

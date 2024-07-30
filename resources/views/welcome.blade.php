@@ -5,7 +5,7 @@
             @if ($latestBlog->getImage())
                 <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}" loading="lazy" />
             @else
-                <img src="{{ asset('/Images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+                <img src="{{ asset('assets/images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}" loading="lazy" />
             @endif
 
 
@@ -27,7 +27,7 @@
                 {!! Str::limit($latestBlog->description, 150) !!}
             </p>
             <div class="user__profile">
-                <img src="{{ $latestBlog->user->profile_image ? asset('storage/' . $latestBlog->user->profile_image) : asset('Images/User-1.jpg') }}"
+                <img src="{{ $latestBlog->user->profile_image ? asset('storage/' . $latestBlog->user->profile_image) : asset('assets/images/User-1.jpg') }}"
                     alt="User name {{ $latestBlog->user->name }}" />
                 <p>By <span class="user__name">{{ $latestBlog->user->name }}</span></p>
             </div>
