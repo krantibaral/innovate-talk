@@ -5,7 +5,7 @@
             @if ($latestBlog->getImage())
                 <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}" loading="lazy" />
             @else
-                <img src="{{ asset('Images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+                <img src="{{ asset('/Images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}" loading="lazy" />
             @endif
 
 
