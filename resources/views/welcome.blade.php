@@ -3,12 +3,10 @@
     <section class="blog__preview">
         <figure class="preview__image">
             @if ($latestBlog->getImage())
-                <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+                <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}"/>
             @else
-                <img src="{{ asset('Images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+                <img src="{{ asset('Images/previewImage.jpg') }}" alt="{{ $latestBlog->title }}" />
             @endif
-
-
         </figure>
 
 
@@ -24,15 +22,17 @@
                 </h2>
             </a>
             <p class="preview__description">
-                {!! Str::limit($latestBlog->description, 150) !!}
+                {{-- {!! Str::limit($latestBlog->description, 150) !!} --}}
+                {!! Str::limit(strip_tags($latestBlog->description), 150) !!}
+
             </p>
             <div class="user__profile">
-                <img src="{{ $latestBlog->user->profile_image ? asset('storage/' . $latestBlog->user->profile_image) : asset('Images/User-1.jpg') }}"
-                    alt="User name {{ $latestBlog->user->name }}" />
+                {{-- <img src="{{ $latestBlog->user->profile_image ? asset('storage/' . $latestBlog->user->profile_image) : asset('Images/User-1.jpg') }}"
+                    alt="User name {{ $latestBlog->user->name }}" /> --}}
+                <img src="{{ asset('Images/User-1.jpg')}}" alt="User name Joshep Mathew" />
+
                 <p>By <span class="user__name">{{ $latestBlog->user->name }}</span></p>
             </div>
-
-
         </div>
     </section>
 
@@ -49,7 +49,7 @@
                     <article class="news__card hidden">
                         <figure class="news__image">
                             <a href="{{ route('blog_details', $blog->slug) }}">
-                                <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" loading="lazy" />
+                                <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" />
                             </a>
                         </figure>
                         <hr />
@@ -97,7 +97,7 @@
 
                 <div class="category__advertisement__section hidden">
                     @foreach ($advertisements as $advertisement)
-                        <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" loading="lazy" />
+                        <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" />
                     @endforeach
                 </div>
             </section>
@@ -161,7 +161,7 @@
                     <article class="card">
                         <figure class="card__image">
                             <a href="{{ route('blog_details', $blog->slug) }}">
-                                <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" loading="lazy" />
+                                <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" />
                             </a>
                         </figure>
                         <div class="card__body">
@@ -199,12 +199,12 @@
     <!-- Advertisement Section -->
     <section class="advertisement__section1">
         @foreach ($advertisements as $advertisement)
-            <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" loading="lazy" />
+            <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" />
         @endforeach
     </section>
 
 
     <!-- <section class="advertisement__section2">
-                                        <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
-                                    </section> -->
+                                            <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
+                                        </section> -->
 @endsection
