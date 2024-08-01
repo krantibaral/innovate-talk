@@ -1,7 +1,7 @@
 <footer class="footer__container">
     <section class="about__company">
         <figure class="logo">
-            <img src="{{ asset('Images/blogernpLogo.png') }}" alt="logo" />
+            <img src="{{ asset('assets/images/blogernpLogo.png') }}" alt="logo" />
         </figure>
         <p class="company__description">Michael Madigan on Sunday was confronted with the reality that he lacks
             support
@@ -17,28 +17,28 @@
         <div class="social__container">
             <div class="social__card">
                 <figure class="social__image">
-                    <img src="{{ asset('Images/Facebook_logo.jpg') }}" alt="Facebook logo">
+                    <img src="{{ asset('assets/images/Facebook_logo.jpg') }}" alt="Facebook logo">
                 </figure>
                 <p class="likes"><span>1500</span> Likes</p>
                 <button class="social__btn"><a href="#">Like</a></button>
             </div>
             <div class="social__card">
                 <figure class="social__image">
-                    <img src="{{ asset('Images/Twitter_logo.jpg') }}" alt="Twitter logo">
+                    <img src="{{ asset('assets/images/Twitter_logo.jpg') }}" alt="Twitter logo">
                 </figure>
                 <p class="likes"><span>1500</span> Tweets</p>
                 <button class="social__btn"><a href="#">Tweet</a></button>
             </div>
             <div class="social__card">
                 <figure class="social__image">
-                    <img src="{{ asset('Images/Instagram_logo.jpg') }}" alt="Instagram logo">
+                    <img src="{{ asset('assets/images/Instagram_logo.jpg') }}" alt="Instagram logo">
                 </figure>
                 <p class="likes"><span>1500</span> Followers</p>
                 <button class="social__btn"><a href="#">Follow</a></button>
             </div>
             <div class="social__card">
                 <figure class="social__image">
-                    <img src="{{ asset('Images/Youtube_logo.jpg') }}" alt="Youtube logo">
+                    <img src="{{ asset('assets/images/Youtube_logo.jpg') }}" alt="Youtube logo">
                 </figure>
                 <p class="likes"><span>1500</span> Subscribers</p>
                 <button class="social__btn"><a href="#">Subscribe</a></button>

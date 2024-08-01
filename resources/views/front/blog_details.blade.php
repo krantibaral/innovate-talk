@@ -19,7 +19,7 @@
             </h2>
 
             <div class="user__profile hidden">
-                <img src="{{ asset('Images/User-1.jpg') }}" alt="User name Joshep Mathew" />
+                <img src="{{ asset('assets/images/User-1.jpg') }}" alt="User name Joshep Mathew" />
                 <p>By <span class="user__name"> {{ $article->user->name }} </span></p>
             </div>
 
@@ -45,21 +45,21 @@
                 <div class="social__media">
                     <div class="social__card hidden">
                         <figure class="social__image">
-                            <img src="{{ asset('Images/Facebook_logo.jpg') }}" alt="Facebook logo">
+                            <img src="{{ asset('assets/images/Facebook_logo.jpg') }}" alt="Facebook logo">
                         </figure>
                         <p class="share"><span>40</span> share</p>
                     </div>
 
                     <div class="social__card hidden">
                         <figure class="social__image">
-                            <img src="{{ asset('Images/Twitter_logo.jpg') }}" alt="Twitter logo">
+                            <img src="{{ asset('assets/images/Twitter_logo.jpg') }}" alt="Twitter logo">
                         </figure>
                         <p class="share"><span>08</span> Tweet</p>
                     </div>
 
                     <div class="social__card hidden">
                         <figure class="social__image">
-                            <img src="{{ asset('Images/Youtube_logo.jpg') }}" alt="Youtube logo">
+                            <img src="{{ asset('assets/images/Youtube_logo.jpg') }}" alt="Youtube logo">
                         </figure>
                         <p class="share"><span>20</span> Subscriber</p>
                     </div>
@@ -71,7 +71,7 @@
             {{-- <span class="quote hidden">
             Lining concealed back zip fasten swing style high waisted double
             layer full pattern floral creating your app package.
-            <img src="Images/quotes.png" alt="" loading="lazy">
+            <img src="assets/images/quotes.png" alt="" loading="lazy">
             <div class="user__profile">
                 <p>By <span class="user__name"> Joshep Mathew </span></p>
             </div>
@@ -105,9 +105,9 @@
             Visual search and fit-tech are definitely trends.</p> --}}
 
             {{-- <div class="blog__details__image">
-            <img class="hidden" src="{{ asset('Images/Article_image2.jpg') }}" alt="" loading="lazy">
-            <img class="hidden" src="{{ asset('Images/Article_image3.jpg') }}" alt="" loading="lazy">
-            <img class="hidden" src="{{ asset('Images/Article_image4.jpg') }}" alt="" loading="lazy">
+            <img class="hidden" src="{{ asset('assets/images/Article_image2.jpg') }}" alt="" loading="lazy">
+            <img class="hidden" src="{{ asset('assets/images/Article_image3.jpg') }}" alt="" loading="lazy">
+            <img class="hidden" src="{{ asset('assets/images/Article_image4.jpg') }}" alt="" loading="lazy">
         </div> --}}
 
 
@@ -175,7 +175,7 @@
                 @foreach($categories as $category)
                     <figure class="hidden">
                         <a href="#">
-                            <!-- You can use category-specific images if available -->
+                            <!-- You can use category-specific assets/images if available -->
                             <img src="{{ $category->getImage() }}" alt="{{ $category->title }}" />
                             <figcaption>{{ $category->name }}</figcaption>
                         </a>
@@ -194,7 +194,7 @@
                     <article class="card hidden">
                         <figure class="card__image">
                             <a href="blog_details_premium.html">
-                                <img src="Images/Article_image1.jpg" alt="Office environment" loading="lazy" />
+                                <img src="assets/images/Article_image1.jpg" alt="Office environment" loading="lazy" />
                             </a>
                         </figure>
 
@@ -215,7 +215,7 @@
                     <article class="card hidden">
                         <figure class="card__image">
                             <a href="blog_details_premium.html">
-                                <img src="Images/Article_image2.jpg" alt="Office environment" loading="lazy" />
+                                <img src="assets/images/Article_image2.jpg" alt="Office environment" loading="lazy" />
                             </a>
                         </figure>
 
@@ -236,7 +236,7 @@
                     <article class="card hidden">
                         <figure class="card__image">
                             <a href="blog_details_premium.html">
-                                <img src="Images/Article_image3.jpg" alt="Office environment" loading="lazy" />
+                                <img src="assets/images/Article_image3.jpg" alt="Office environment" loading="lazy" />
                             </a>
                         </figure>
                         <div class="card__body">
@@ -256,7 +256,7 @@
                     <article class="card hidden">
                         <figure class="card__image">
                             <a href="blog_details_premium.html">
-                                <img src="Images/Article_image4.jpg" alt="Office environment" loading="lazy" />
+                                <img src="assets/images/Article_image4.jpg" alt="Office environment" loading="lazy" />
                             </a>
                         </figure>
 
