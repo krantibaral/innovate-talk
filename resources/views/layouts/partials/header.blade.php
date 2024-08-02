@@ -23,7 +23,7 @@
                         <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
                     </a>
                     <ul class="dropdown">
-                        @foreach ($categories->skip(6) as $category)
+                        @foreach ($categories->skip(9) as $category)
                             <li>
                                 <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
                             </li>
