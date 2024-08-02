@@ -111,12 +111,11 @@
         </div> --}}
 
 
-            <section class="advertisement__section1">
-                @foreach ($advertisements as $advertisement)
+            @foreach ($advertisements as $advertisement)
+                <section class="advertisement__section1">
                     <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" loading="lazy" />
-                @endforeach
-            </section>
-
+                </section>
+            @endforeach
 
             <div class="blog__tags hidden">
                 <li class="tag__name hidden">Popular</li>
@@ -172,18 +171,18 @@
         <section class="favourite__category">
             <h3 class="card__headline hidden">Favourite Category</h3>
             <section class="category__list">
-                @foreach($categories as $category)
+                @foreach ($categories as $category)
                     <figure class="hidden">
                         <a href="#">
                             <!-- You can use category-specific assets/images if available -->
                             <img src="{{ $category->getImage() }}" alt="{{ $category->title }}" />
-                            <figcaption>{{ $category->name }}</figcaption>
                         </a>
+                        <figcaption>{{ $category->name }}</figcaption>
                     </figure>
                 @endforeach
             </section>
         </section>
-        
+
 
         <main class="chamber hidden">
             <section class="wrapper">
@@ -276,11 +275,11 @@
                 </section>
         </main>
 
-        <section class="advertisement__section1">
-            @foreach ($advertisements as $advertisement)
+        @foreach ($advertisements as $advertisement)
+            <section class="advertisement__section1 hidden">
                 <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" loading="lazy" />
-            @endforeach
-        </section>
+            </section>
+        @endforeach
     </section>
 
     <!-- Blog Details Ends -->
