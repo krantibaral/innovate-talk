@@ -192,9 +192,6 @@ body {
     margin: -20px 0 0 -20px;
 }
 
-/* PRELOADER ENDS*/
-
-
 /* NAVAGATION CSS STARTS HERE */
 
 .navagation {
@@ -337,7 +334,7 @@ body {
 
 .blog__preview>.preview__details>.category,
 .category {
-    width: 90px;
+    width: fit-content;
     height: fit-content;
     padding: clamp(4px, 1vw, 6px);
     font-weight: bold;
@@ -348,7 +345,7 @@ body {
 
 .blog__preview>.preview__details>.upload__date,
 .upload__date {
-    width: 150px;
+    width: fit-content;
     height: fit-content;
     color: #c0bfbf;
     padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 10px);
@@ -501,6 +498,7 @@ body {
 
 
 .wrapper>.news__container>.news__card>.news__card__body>.upload__date {
+    width: 100%;
     color: #686868;
     display: flex;
     justify-content: flex-end;
@@ -1036,6 +1034,212 @@ body {
 }
 
 
+/* ----------------BLOGS PAGE CSS FROM HERE---------------------- */
+
+
+.preview {
+    position: relative;
+    width: 100%;
+    height: 16rem;
+}
+
+.preview>.preview__image>img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Making the preview image darker to make the text more visible. */
+.preview>.preview__image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    z-index: -1;
+}
+
+.preview>.preview__details {
+    width: 100%;
+    height: 100%;
+    color: #bcbbbb;
+    /* color: #f8f8f8; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview>.preview__details>.category__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-transform: uppercase;
+}
+
+/* CATEGORY ITEMS CSS STARTS HERE */
+.blogs__container {
+    width: 100%;
+    background-color: #f4f2f2;
+}
+
+.blogs__container>.wrapper {
+    position: relative;
+    width: 95%;
+    display: flex;
+    margin: auto;
+    background-color: #f4f2f2;
+}
+
+.blogs__container>.wrapper>.blog__container {
+    width: 70%;
+    height: 150vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #b5b4b4 #ffffff00;
+    margin-top: 15px;
+    transition: 0.5s ease-in-out;
+}
+
+.blog__container>.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: #f4f2f2;
+    flex-wrap: wrap;
+}
+
+.column-50 {
+    width: 48% !important;
+}
+
+.column-100 {
+    width: 97% !important;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    transition: 0.5s ease-in-out
+}
+
+.blog__container>.row>.column-50>.card__image {
+    width: 100%;
+    height: 14rem;
+    overflow: hidden;
+    border-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.blog__container>.row>.column-50>.card__image>a>img {
+    width: 100%;
+    height: 14rem;
+    object-fit: cover;
+    transition: 0.5s ease-in-out;
+}
+
+.blog__container>.row>.column-50>.card__image>a:hover>img {
+    scale: 1.2;
+}
+
+.blog__container>.row>.column-50>.card__body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.blog__container>.row>.column-50>.card__body>.upload__date {
+    margin: auto;
+    margin-left: 10px;
+    color: #777777;
+}
+
+.blog__container>.row>.card {
+    height: fit-content;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.blog__container>.row>.column-100>.card__image {
+    width: 40%;
+    height: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.blog__container>.row>.column-100>.card__image>a>img {
+    width: 100%;
+    height: 14rem;
+    border-radius: 5px;
+    object-fit: cover;
+    transition: 0.5s ease-in-out;
+}
+
+.blog__container>.row>.column-100>.card__image>a:hover>img {
+    scale: 1.2;
+}
+
+.blog__container>.row>.column-100>.card__body {
+    width: 50%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.blog__container>.row>.column-100>.card__body>.upload__date {
+    width: 100%;
+    color: #686868;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.blog__container>.row>.card>.card__body>.card__title {
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.blog__container>.row>.card>.card__body>.user__profile>p>.user__name {
+    font-weight: bold;
+    color: #e44a4a;
+}
+
+/* BLOG ADVERTISEMENT SECTION CSS ENDS HERE */
+
+.advertisement__container {
+    position: relative;
+    width: 30%;
+    height: fit-content;
+    margin: 15px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+
+.advertisement__container>.advertisement__headline {
+    width: 100%;
+    padding: 15px 10px 10px 0;
+    font-size: clamp(1.4rem, 1.4vw, 1.6rem);
+    display: flex;
+    justify-content: center;
+    color: #777777;
+}
+
+.advertisement__container>.advertisement__section>img {
+    width: 100%;
+    height: 20rem;
+    padding: 10px 10px 5px 10px;
+    object-fit: cover;
+    transition-delay: 1000ms;
+}
+
+
+
 /* ----------------BLOG DETAILS PAGE CSS FROM HERE---------------------- */
 .blog__details__container {
     width: 100%;
@@ -1101,21 +1305,17 @@ body {
 }
 
 .counter {
-    width: clamp(70%, 85%, 100%);
-    /* Adjusted using clamp */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    flex: 1 1 0;
 }
 
 .counter>.stats__container {
     display: flex;
     padding: clamp(5px, 2vw, 10px);
     align-items: center;
-    flex: 1;
-    /* Allows the container to take up available space */
     min-width: 200px;
-    /* Ensures a minimum width for the container */
 }
 
 .counter>.stats__container>hr {
@@ -1180,12 +1380,27 @@ body {
 }
 
 .blog__details>.blog__description {
-    position: relative;
-    width: 80%;
+    position: relative !important;
+    width: 80% !important;
+    height: fit-content !important;
+    margin: 10px auto !important;
+    text-align: justify !important;
+    line-height: 1.6 !important;
+}
+
+/*  This CSS overrides the default Summernote styles to apply custom styles */
+.elementor-section {
+    width: 95%;
     height: fit-content;
-    margin: 10px auto;
-    text-align: justify;
+    background-color: #fff !important;
+    margin: auto;
+    margin-bottom: clamp(10px, 2vw, 20px);
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Times New Roman', Times, serif !important;
     line-height: 1.6;
+    text-align: justify !important;
 }
 
 .blog__details>.summary__premium::after {
@@ -1466,19 +1681,26 @@ body {
     margin-bottom: 20px;
 }
 
-.comment__previews>.comment__card>.comment__head>.user__profile>img {
+.comment__previews>.comment__card>.comment__head>.comment__user__profile {
+    display: flex;
+    align-items: center;
+}
+
+.comment__previews>.comment__card>.comment__head>.comment__user__profile>img {
     width: 60px;
     height: 60px;
     margin-right: 10px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-.comment__previews>.comment__card>.comment__head>.user__profile>.user__detail>.user__name {
+.comment__previews>.comment__card>.comment__head>.comment__user__profile>.user__detail>.user__name {
     font-weight: bold;
     font-size: 1.3rem;
     color: #333333;
 }
 
-.comment__previews>.comment__card>.comment__head>.user__profile>.user__detail>.comment__date {
+.comment__previews>.comment__card>.comment__head>.comment__user__profile>.user__detail>.comment__date {
     font-size: 0.85rem;
 }
 
@@ -1600,78 +1822,49 @@ body {
     margin: auto;
     padding: 20px;
     background-color: #fff;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #b5b4b4 #ffffff00;
 }
 
 .favourite__category>.card__headline {
-    width: clamp(10rem, 20vw, 14rem);
+    width: 14rem;
 }
 
 .favourite__category>.category__list {
     display: flex;
-    /* padding-left: 10px; */
-    flex-wrap: wrap;
     color: #333333;
     justify-content: space-evenly;
 }
 
 .favourite__category>.category__list>figure {
     margin: 10px;
-    overflow: hidden;
 }
 
-.favourite__category>.category__list>figure:nth-child(2) {
+.favourite__category>.category__list>figure:nth-child(n+2) {
     transition-delay: 200ms;
 }
 
-.favourite__category>.category__list>figure:nth-child(3) {
+.favourite__category>.category__list>figure:nth-child(n+3) {
     transition-delay: 300ms;
 }
 
-.favourite__category>.category__list>figure:nth-child(4) {
-    transition-delay: 400ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(5) {
-    transition-delay: 500ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(6) {
-    transition-delay: 600ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(7) {
-    transition-delay: 700ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(8) {
-    transition-delay: 800ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(9) {
-    transition-delay: 900ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(10) {
-    transition-delay: 1000ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(11) {
-    transition-delay: 1100ms;
-}
-
-.favourite__category>.category__list>figure:nth-child(12) {
-    transition-delay: 1200ms;
+.favourite__category>.category__list>figure>a {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    display: block;
 }
 
 .favourite__category>.category__list>figure>a>img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
     margin: 0 10px 10px 10px;
     object-fit: cover;
     transition: 0.5s linear;
 }
 
-.favourite__category>.category__list>figure>a>figcaption {
+.favourite__category>.category__list>figure>figcaption {
     margin-left: 10px;
     color: #111111;
 }
@@ -1697,7 +1890,7 @@ body {
 .page__title>p {
     width: 30%;
     font-size: 1rem;
-        color: #8d8d8d;
+    color: #8d8d8d;
     line-height: 1.5;
     transition-delay: 200ms;
 }
@@ -2366,6 +2559,11 @@ label>.star {
     .comment__post>h3 {
         margin-top: 20px;
     }
+
+    .counter {
+        /* width: 100%; */
+        flex-wrap: nowrap;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -2423,7 +2621,7 @@ label>.star {
         content: "";
         width: 10rem;
         position: absolute;
-        top: 15px;
+        top: 5px;
         border-top: 3px dotted #d61414;
     }
 
@@ -2433,10 +2631,38 @@ label>.star {
         margin: 10px 0px 20px 10px;
     }
 
-    .category__container {
+    .category__container,
+    .advertisement__container {
         display: none;
     }
 
+    .blogs__container>.wrapper>.blog__container {
+        width: 100%;
+        transition: 0.5s ease-in-out;
+    }
+
+    .column-100 {
+        flex-direction: column;
+        transition: 0.5s ease-in-out
+    }
+
+    .blog__container>.row>.column-100>.card__image {
+        width: 100%;
+        padding: 0;
+        border-radius: 3px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .blog__container>.row>.column-100>.card__image>a>img {
+        border-radius: 3px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .blog__container>.row>.column-100>.card__body {
+        width: 100%;
+    }
 
     .slider__container>.swiper-wrapper>.news__slider {
         flex-direction: column;
@@ -2523,6 +2749,10 @@ label>.star {
         width: 50%;
         transition: 1s ease-in-out;
     }
+
+    .counter {
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2560,5 +2790,9 @@ label>.star {
     .contact__us>.contact__page {
         width: 75%;
         transition: 1s ease-in-out;
+    }
+
+    .column-50 {
+        width: 97% !important;
     }
 }
