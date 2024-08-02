@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogernp</title>
+
+  <!-- Fontawesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="Assets/CSS/login.css" />
+</head>
+
+<body>
+  <!-- Start Preloader -->
+  <div id="loader">
+    <div class="spinner">
+      <div class="cube cube0"></div>
+      <div class="cube cube1"></div>
+      <div class="cube cube2"></div>
+      <div class="cube cube3"></div>
+      <div class="cube cube4"></div>
+      <div class="cube cube5"></div>
+      <div class="cube cube6"></div>
+      <div class="cube cube7"></div>
+      <div class="cube cube8"></div>
+      <div class="cube cube9"></div>
+      <div class="cube cube10"></div>
+      <div class="cube cube11"></div>
+      <div class="cube cube12"></div>
+      <div class="cube cube13"></div>
+      <div class="cube cube14"></div>
+      <div class="cube cube15"></div>
+    </div>
+  </div>
+  <!-- End Preloader -->
+
+  <section class="container">
+    <div class="welcome-section">
+      <img src="Assets/Images/Wave.png" alt="">
+      <img src="Assets/Images/Article_image1.jpg" alt="">
+      <img class="logo" src="Assets/Images/loginBloggernpLogo.png" alt="logo" />
+    </div>
+
+    <div class="register-form">
+      <h1>Innovate <span>Talk</span></h1>
+      <h2>Sign Up</h2>
+      <form id="registrationForm">
+        <div class="row">
+          <div class="col-50">
+            <img class="icon" src="Assets/Icons/User-Story--Streamline-Ultimate.png" alt="" srcset="">
+            <input id="firstName" name="firstName" type="text" placeholder="" required />
+            <label for="firstName">First Name</label>
+          </div>
+
+          <div class="col-50">
+            <img class="icon" src="Assets/Icons/User-Story--Streamline-Ultimate.png" alt="" srcset="">
+            <input id="lastName" name="lastName" type="text" placeholder="" required />
+            <label for="lastName">Last Name</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-50">
+            <img class="icon" src="Assets/Icons/User-Story--Streamline-Ultimate.png" alt="" srcset="">
+            <input id="username" name="username" type="text" placeholder="" required />
+            <label for="username">Username</label>
+          </div>
+
+          <div class="col-50">
+            <img class="icon" src="Assets/Icons/Email-Logo--Streamline-Ultimate.png" alt="" >
+            <input id="email" name="email" type="email" placeholder="" required />
+            <label for="email">Email</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-100">
+            <img id="togglePasswordImage" class="icon" src="Assets/Icons/Close-Eyes--Streamline-Ultimate.png" alt="Toggle Password Visibility" >
+            <input id="password" name="password" type="password" placeholder="" required />
+            <label for="password">Password</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-100">
+            <img  id="toggleConfirmPasswordImage" class="icon" src="Assets/Icons/Close-Eyes--Streamline-Ultimate.png" alt="Toggle Password Visibility">
+            <input id="confirmPassword" name="confirmPassword" type="password" placeholder="" required />
+            <label for="confirmPassword">Confirm Password</label>
+            <span class="error-message" id="error-message">Passwords do not match.</span>
+          </div>
+        </div>
+
+        <button class="register-btn" type="submit">Register</button>
+      </form>
+      <p>Already registered <a href="login.html">Sign In Here</a></p>
+    </div>
+
+  </section>
+
+  <!-- Swiper JS CDN-->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+  <script src="Assets/JS/jquery.min.js"></script>
+  <script src="Assets/JS/app.js"></script>
+</body>
+
+</html>

@@ -11,7 +11,7 @@
     <nav class="nav__list">
         <ul>
             {{-- <li><a href="#">News & Launches</a></li> --}}
-            @foreach ($categories->take(6) as $category)
+            @foreach ($categories->take(8) as $category)
                 <li>
                     <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
                 </li>
@@ -23,7 +23,7 @@
                         <i class="fa-solid fa-chevron-down" style="color: #f9413f"></i>
                     </a>
                     <ul class="dropdown">
-                        @foreach ($categories->skip(9) as $category)
+                        @foreach ($categories->skip(6) as $category)
                             <li>
                                 <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
                             </li>

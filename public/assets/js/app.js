@@ -33,7 +33,7 @@ function validateEmail() {
   }); // End Window Load
 })(jQuery, window, document);
 
-
+// Comment like button fucntion 
 $(document).ready(function () {
   $(".heart__btn").click(function () {
     let numberElement = $(this).find('.number');
@@ -55,6 +55,8 @@ $(document).ready(function () {
   });
 });
 
+
+// Contact background image replacer  
 document.addEventListener('DOMContentLoaded', function () {
   var contactUsSection = document.querySelector('.contact__us');
   var imageUrl = contactUsSection.getAttribute('data-image');
@@ -63,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// On scroll content load event
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     console.log(entry)
@@ -76,3 +79,45 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
+
+// Password verification event
+function checkPasswords() {
+  var password = document.getElementById('password').value;
+  var confirmPassword = document.getElementById('confirmPassword').value;
+  var errorMessage = document.getElementById('error-message');
+
+  if (password !== confirmPassword) {
+    errorMessage.style.display = 'inline';
+  } else {
+    errorMessage.style.display = 'none';
+  }
+}
+
+document.getElementById('password').addEventListener('input', checkPasswords);
+document.getElementById('confirmPassword').addEventListener('input', checkPasswords);
+
+// Image and Password toogle event
+
+function toggleVisibility(inputId, imageId, hideSrc, showSrc) {
+  var inputField = document.getElementById(inputId);
+  var image = document.getElementById(imageId);
+
+  if (inputField.type === 'password') {
+    inputField.type = 'text';
+    image.src = showSrc;
+  } else {
+    inputField.type = 'password';
+    image.src = hideSrc;
+  }
+}
+
+// Add click event listener to toggle password visibility and image toggling
+document.getElementById('togglePasswordImage').addEventListener('click', function () {
+  toggleVisibility('password', 'togglePasswordImage', 'Assets/Icons/Close-Eyes--Streamline-Ultimate.png', 'Assets/Icons/Open--Eye.png');
+});
+
+// Add click event listener to toggle confirm password visibility
+document.getElementById('toggleConfirmPasswordImage').addEventListener('click', function () {
+  toggleVisibility('confirmPassword', 'toggleConfirmPasswordImage', 'Assets/Icons/Close-Eyes--Streamline-Ultimate.png', 'Assets/Icons/Open--Eye.png');
+});
