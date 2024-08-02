@@ -3,9 +3,10 @@
     <section class="blog__preview">
         <figure class="preview__image">
             @if ($latestBlog->getImage())
-                <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}"/>
+                <img src="{{ $latestBlog->getImage() }}" alt="{{ $latestBlog->title }}" />
             @else
-                <img src="{{ asset('assets/images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}" loading="lazy" />
+                <img src="{{ asset('assets/images/AdvertisementBanner.jpg') }}" alt="{{ $latestBlog->title }}"
+                    loading="lazy" />
             @endif
         </figure>
 
@@ -86,10 +87,11 @@
 
                 <ul>
                     @foreach ($categories as $category)
-                        {{-- <a href="{{ route('category.show', $category->id) }}"> --}}
-                        <li class="category__list hidden">{{ $category->name }}</li>
-                        {{--
-                    </a> --}}
+                        <a href="blogs.html">
+
+                            {{-- <a href="{{ route('category.show', $category->id) }}"> --}}
+                            <li class="category__list hidden">{{ $category->name }}</li>
+                        </a>
                     @endforeach
                 </ul>
 
@@ -107,7 +109,7 @@
 
 
     <!-- Starting of slider section -->
-    <section class="swiper mySwiper slider__container">
+    <section class="swiper mySwiper slider__container hidden">
         <div class="swiper-wrapper">
             @foreach ($blogs as $blog)
                 <!-- Slide -->
@@ -135,9 +137,16 @@
                             style="display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2; text-overflow: ellipsis; white-space: normal;">
                             {{ strip_tags($blog->description) }}!
                         </p>
-                        <div class="user__profile">
-                            {{-- <img src="{{ $blog->author->getImage() }}" alt="User name {{ $blog->author->name }}" /> --}}
-                            <p>By <span class="user__name">{{ $blog->user->name }}</span></p>
+                        <div class="user__profile" style="display: flex; align-items: center; color:rgb(201, 201, 201);">
+                            @if ($blog->author_image)
+                                <img src="{{ asset('storage/' . $blog->author_image) }}"
+                                    alt="User name {{ $blog->user->name }}"
+                                    style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
+                            @else
+                                <i class="fa fa-user-circle" style="font-size: 40px;"></i>
+                            @endif
+                            <p style="margin-left: 10px; color:black;">By <span
+                                    class="user__name">{{ $blog->user->name }}</span></p>
                         </div>
                     </div>
                 </section>
@@ -151,12 +160,12 @@
 
     <!-- Start of Recently viewed section -->
     <!-- Recently viewed section -->
-    <main class="chamber">
+    <main class="chamber hidden">
         <section class="wrapper">
-            <h3 class="card__headline">Recently Viewed</h3>
+            <h3 class="card__headline hidden">Recently Viewed</h3>
             <section class="card__container">
                 @foreach ($recentlyViewedBlogs as $blog)
-                    <article class="card">
+                    <article class="card hidden">
                         <figure class="card__image">
                             <a href="{{ route('blog_details', $blog->slug) }}">
                                 <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" />
@@ -180,7 +189,7 @@
 
 
     <!-- Mail section -->
-    <section class="mail__for__news">
+    <section class="mail__for__news hidden">
         <i class="fa-solid fa-envelope-open-text"></i>
         <div class="mail__text">
             <p>Get Every News Letter</p>
@@ -195,14 +204,14 @@
     <!-- Mail section Ends -->
 
     <!-- Advertisement Section -->
-    <section class="advertisement__section1">
-        @foreach ($advertisements as $advertisement)
+    @foreach ($advertisements as $advertisement)
+        <section class="advertisement__section1 hidden">
             <img src="{{ $advertisement->getImage() }}" alt="{{ $advertisement->title }}" />
-        @endforeach
-    </section>
+        </section>
+    @endforeach
 
 
     <!-- <section class="advertisement__section2">
-                                            <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
-                                        </section> -->
+                                                            <img src="Images/AdvertisementBanner.jpg" alt="Advertisement Banner">
+                                                        </section> -->
 @endsection

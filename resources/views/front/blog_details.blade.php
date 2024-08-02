@@ -24,7 +24,7 @@
             </div>
 
             <div class="counter">
-                <div class="stats__container hidden">
+                <div class="stats__container">
                     <hr>
                     <div class="stats  hidden">
                         <i class="fa-regular fa-eye"></i>
@@ -66,7 +66,7 @@
                 </div>
 
             </div>
-            <p class="blog__description hidden"> {!! $article->description !!}</p>
+            <p class="blog__description"> {!! $article->description !!}</p>
 
             {{-- <span class="quote hidden">
             Lining concealed back zip fasten swing style high waisted double

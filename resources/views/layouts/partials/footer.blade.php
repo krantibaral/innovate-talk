@@ -1,7 +1,9 @@
 <footer class="footer__container">
     <section class="about__company">
         <figure class="logo">
-            <img src="{{ asset('assets/images/blogernpLogo.png') }}" alt="logo" />
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('assets/images/blogernpLogoFooter.png') }}" alt="logo" />
+            </a>
         </figure>
         <p class="company__description">Michael Madigan on Sunday was confronted with the reality that he lacks
             support

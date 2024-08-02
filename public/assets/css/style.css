@@ -334,7 +334,7 @@ body {
 
 .blog__preview>.preview__details>.category,
 .category {
-    width: 90px;
+    width: fit-content;
     height: fit-content;
     padding: clamp(4px, 1vw, 6px);
     font-weight: bold;
@@ -345,7 +345,7 @@ body {
 
 .blog__preview>.preview__details>.upload__date,
 .upload__date {
-    width: 150px;
+    width: fit-content;
     height: fit-content;
     color: #c0bfbf;
     padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 10px);
@@ -379,7 +379,7 @@ body {
 }
 
 .blog__preview>.preview__details>.user__profile>img,
-.user__profile img {
+.user__profile>img {
     width: clamp(30px, 5vw, 40px);
     height: clamp(30px, 5vw, 40px);
     border-radius: 50%;
@@ -1305,21 +1305,17 @@ body {
 }
 
 .counter {
-    width: clamp(70%, 85%, 100%);
-    /* Adjusted using clamp */
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    flex: 1 1 0;
 }
 
 .counter>.stats__container {
     display: flex;
     padding: clamp(5px, 2vw, 10px);
     align-items: center;
-    flex: 1;
-    /* Allows the container to take up available space */
     min-width: 200px;
-    /* Ensures a minimum width for the container */
 }
 
 .counter>.stats__container>hr {
@@ -1384,12 +1380,27 @@ body {
 }
 
 .blog__details>.blog__description {
-    position: relative;
-    width: 80%;
+    position: relative !important;
+    width: 80% !important;
+    height: fit-content !important;
+    margin: 10px auto !important;
+    text-align: justify !important;
+    line-height: 1.6 !important;
+}
+
+/*  This CSS overrides the default Summernote styles to apply custom styles */
+.elementor-section {
+    width: 95%;
     height: fit-content;
-    margin: 10px auto;
-    text-align: justify;
+    background-color: #fff !important;
+    margin: auto;
+    margin-bottom: clamp(10px, 2vw, 20px);
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Times New Roman', Times, serif !important;
     line-height: 1.6;
+    text-align: justify !important;
 }
 
 .blog__details>.summary__premium::after {
@@ -2548,6 +2559,11 @@ label>.star {
     .comment__post>h3 {
         margin-top: 20px;
     }
+
+    .counter {
+        /* width: 100%; */
+        flex-wrap: nowrap;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -2732,6 +2748,10 @@ label>.star {
     .contact__us>.contact__page {
         width: 50%;
         transition: 1s ease-in-out;
+    }
+
+    .counter {
+        flex-wrap: wrap;
     }
 }
 
