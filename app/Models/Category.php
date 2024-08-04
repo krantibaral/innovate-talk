@@ -9,5 +9,17 @@ class Category extends BaseModel
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $appends = ['image_url', 'thumb_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->getImage();
+    }
+
+    public function getThumbUrlAttribute()
+    {
+        return $this->getThumbnail();
+    }
+
 
 }

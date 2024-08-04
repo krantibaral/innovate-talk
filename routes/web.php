@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BannerBlogController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('comments', CommentController::class);
     Route::resource('banner_blogs', BannerBlogController::class);
     Route::resource('users', UserController::class);
+    Route::resource('faqs', FAQController::class);
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
 });

@@ -343,6 +343,12 @@ return [
             'can' => 'comments'
         ],
         [
+            'text' => 'FAQ',
+            'url' => 'admin/faqs',
+            'icon' => 'fas fa-question-circle',
+            'can' => 'faqs'
+        ],
+        [
             'text' => 'Users',
             'url' => 'admin/users',
             'icon' => 'fas fa-fw fa-users',

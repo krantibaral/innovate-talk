@@ -22,6 +22,7 @@ class PermissionSeeder extends Seeder
             'blogs',
             'advertisements',
             'comments',
+            'faqs',
             'profile',
         ];
 
