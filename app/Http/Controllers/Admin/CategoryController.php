@@ -73,7 +73,8 @@ class CategoryController extends BaseController
     public function edit($id)
     {
         $info = $this->crudInfo();
-        $info['item'] = Category::select('id', 'name')->findOrFail($id);
+        $info['item'] = Category::findOrFail($id);
+        // dd($info);
         return view($this->editResource(), $info);
     }
 

@@ -2,7 +2,7 @@
 @push('styles')
 @endpush
 @section('form_content')
-    @include('admin.categories.edit')
+    @include('admin.categories.form')
 @endsection
 @push('scripts')
 @endpush
