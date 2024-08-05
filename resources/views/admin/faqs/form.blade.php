@@ -1,3 +1,4 @@
+<input type="hidden" name="blog_id" value="{{ $blog_id }}">
 <div class="row mb-3">
     <div class="col-md-12">
         <label for="name">Question *</label>

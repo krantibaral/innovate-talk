@@ -77,4 +77,63 @@
             @endif
         </div>
     </div>
+
+    <!-- Divider -->
+    <hr class="my-4">
+
+      <!-- FAQ Tab Section -->
+      <div class="row my-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">FAQ</h3> 
+                    <a href="{{ route('faqs.create', ['blog_id' => $item->id]) }}"
+                       class="btn btn-primary float-right">
+                        <i class="fa fa-plus"></i>
+                        <span class="kt-hidden-mobile">Add new</span>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table" id="data-table">
+                            <thead>
+                                <tr class="text-left text-capitalize">
+                                    <th>id</th>
+                                    <th>question</th>
+                                    <th>answer</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+
+@push('scripts')
+    <!-- Include any necessary scripts for DataTable here -->
+    <script src="{{ asset('path/to/datatables.js') }}"></script>
+    <script>
+        $(function() {
+            var blogId = {{ $item->id }};
+            var table = $('#data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('faqs.index') }}",
+                    data: function (d) {
+                        d.blog_id = blogId;
+                    }
+                },
+                columns: [
+                    {data: 'id', name: 'DT_RowIndex'},
+                    {data: 'question', name: 'question'}, 
+                    {data: 'answer', name: 'answer'}, 
+                    {data: 'action', name: 'action'},
+                ],
+            });
+        });
+    </script>
+@endpush

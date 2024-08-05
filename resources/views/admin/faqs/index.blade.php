@@ -1,14 +1,4 @@
-@extends('admin.templates.index')
 
-@section('title', $title)
-
-@section('content_header')
-    <h1>FAQ</h1>
-@stop
-
-@push('styles')
-
-@endpush
 
 @section('index_content')
     <div class="table-responsive">

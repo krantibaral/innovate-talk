@@ -9,4 +9,9 @@ class Faq extends BaseModel
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function blog()
+    {
+        return $this->belongsTo(Blog::class);
+    }
 }

@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class FAQController extends BaseController
 {
-
     public function __construct()
     {
         $this->title = 'FAQ';
         $this->resources = 'admin.faqs.';
         $this->route = 'faqs.';
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,8 +28,18 @@ class FAQController extends BaseController
         if (!auth()->user()->can('faqs')) {
             abort(403);
         }
+    
+        $blogId = $request->input('blog_id');
+        
         if ($request->ajax()) {
-            $data = FAQ::orderBy('id', 'DESC')->get();
+            $query = FAQ::orderBy('id', 'DESC');
+    
+            if ($blogId) {
+                $query->where('blog_id', $blogId);
+            }
+    
+            $data = $query->get();
+    
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('question', function ($row) {
@@ -47,24 +57,25 @@ class FAQController extends BaseController
                 ->rawColumns(['action', 'question'])
                 ->make(true);
         }
+    
         $info = $this->crudInfo();
         return view($this->indexResource(), $info);
     }
-
-
-
+    
     /**
      * Show the form for creating a new resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         if (!auth()->user()->can('faqs.create')) {
             abort(403);
         }
+        $blogId = $request->input('blog_id');
         $info = $this->crudInfo();
-        return view($this->createResource(), $info);
+        return view($this->createResource(), $info)->with('blog_id', $blogId);
     }
 
     /**
@@ -77,12 +88,18 @@ class FAQController extends BaseController
     {
         $request->validate([
             'question' => 'required',
-            'answer' => 'required'
+            'answer' => 'required',
+            'blog_id' => 'nullable|exists:blogs,id' // Validation for blog_id
         ]);
 
         $data = $request->all();
         $faq = new FAQ($data);
         $faq->save();
+
+        // Redirect to the blog's show page if blog_id is provided
+        if ($request->has('blog_id') && $request->input('blog_id')) {
+            return redirect()->route('blogs.show', $request->input('blog_id'));
+        }
 
         return redirect()->route($this->indexRoute());
     }
@@ -117,7 +134,6 @@ class FAQController extends BaseController
         }
         $info = $this->crudInfo();
         $info['item'] = FAQ::findOrFail($id);
-        //        dd($info);
         return view($this->editResource(), $info);
     }
 
@@ -132,7 +148,8 @@ class FAQController extends BaseController
     {
         $request->validate([
             'question' => 'required',
-            'answer' => 'required'
+            'answer' => 'required',
+            'blog_id' => 'nullable|exists:blogs,id' // Add validation for blog_id
         ]);
 
         $data = $request->all();
@@ -141,7 +158,6 @@ class FAQController extends BaseController
 
         return redirect()->route($this->indexRoute());
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -162,5 +178,4 @@ class FAQController extends BaseController
         }
         return redirect()->route($this->indexRoute());
     }
-
 }

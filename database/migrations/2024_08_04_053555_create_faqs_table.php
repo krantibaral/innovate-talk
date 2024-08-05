@@ -14,9 +14,12 @@ return new class extends Migration {
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('blog_id')->nullable(); 
             $table->string('question');
             $table->text('answer');
             $table->timestamps();
+
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('set null');
         });
     }
 
@@ -27,6 +30,11 @@ return new class extends Migration {
      */
     public function down()
     {
+        Schema::table('faqs', function (Blueprint $table) {
+        
+            $table->dropForeign(['blog_id']);
+        });
+
         Schema::dropIfExists('faqs');
     }
 };

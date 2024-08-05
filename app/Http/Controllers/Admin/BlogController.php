@@ -116,7 +116,7 @@ class BlogController extends BaseController
             $blog->addMediaFromRequest('image')->toMediaCollection();
         }
 
-        return redirect()->route($this->indexRoute());
+        return redirect()->route('blogs.show', $blog->id);
     }
 
 
