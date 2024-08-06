@@ -27,13 +27,15 @@
 
                         <div class="card-body">
                             @yield('form_content')
-
                         </div>
-                        @if ($route != 'contacts.')
-                            <div class="card-footer">
+                        
+                        <div class="card-footer">
+                            @if ($route === 'blogs.')
+                                <a href="{{ route('blogs.index') }}" class="btn btn-default float-right">Back</a>
+                            @elseif ($route != 'contacts.')
                                 <a href="javascript:history.back();" class="btn btn-default float-right">Back</a>
-                            </div>
-                        @endif
+                            @endif
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div>
