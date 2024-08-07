@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Advertise;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Mail\ContactFormMail;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -70,4 +72,43 @@ class FrontController extends Controller
 
         return redirect()->back()->with('success', 'Comment posted successfully.');
     }
+
+    public function about()
+    {
+        $categories = Category::all();
+        return view('front.about', ['categories' => $categories]);
+    }
+
+    //contact form submission 
+    public function sendEmail(Request $request)
+    {
+        try {
+            $request->validate([
+                'firstName' => 'required',
+                'lastName' => 'required',
+                'email' => 'required|email',
+                'message' => 'required',
+            ]);
+
+            $formData = [
+                'name' => $request->input('firstName') . ' ' . $request->input('lastName'),
+                'email' => $request->input('email'),
+                'message' => $request->input('message'),
+            ];
+
+            // Send mail to email address
+            Mail::to('timilsinasandesh141@gmail.com')->send(new ContactFormMail($formData));
+
+            // Flash success message
+            $request->session()->flash('success', 'Your message has been sent successfully!');
+        } catch (\Exception $e) {
+            $request->session()->flash('error', 'An error occurred while sending the message.');
+            \Log::error($e);
+            return redirect()->back();
+        }
+
+        return redirect()->back();
+    }
+
+
 }

@@ -51,11 +51,11 @@
     <section class="company__info">
         <h3 class="footer__headline">Company Info</h3>
         <div class="info__links">
-            <a href="about_us.html">About us</a>
+            <a href="{{ route('about') }}">About us</a>
             <a href="#">Careers</a>
             <a href="#">Terms of Service</a>
             <a href="#">Privacy Policy</a>
-            <a href="#">Contact us</a>
+            <a href="{{ route('about') }}">Contact us</a>
             <a href="#">Archives</a>
             <a href="#">Local print ads</a>
             <a href="#">Coupons</a>
