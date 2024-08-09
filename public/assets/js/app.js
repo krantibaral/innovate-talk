@@ -121,3 +121,11 @@ document.getElementById('togglePasswordImage').addEventListener('click', functio
 document.getElementById('toggleConfirmPasswordImage').addEventListener('click', function () {
   toggleVisibility('confirmPassword', 'toggleConfirmPasswordImage', 'Assets/Icons/Close-Eyes--Streamline-Ultimate.png', 'Assets/Icons/Open--Eye.png');
 });
+
+// Faq Js
+document.querySelectorAll('.faq-item h3').forEach((item) => {
+  item.addEventListener('click', () => {
+    const parent = item.parentNode;
+    parent.classList.toggle('open');
+  });
+});
