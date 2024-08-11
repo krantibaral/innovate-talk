@@ -59,7 +59,7 @@
             <a href="#">Archives</a>
             <a href="#">Local print ads</a>
             <a href="#">Coupons</a>
-            <a href="#">FAQ</a>
+            <a href="{{ route('faq') }}">FAQ</a>
             <a href="#">Manage Web Notifications</a>
             <a href="#">Media kit</a>
             <a href="#">Chicago Tribune Store</a>

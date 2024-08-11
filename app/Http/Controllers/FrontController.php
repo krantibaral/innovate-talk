@@ -35,24 +35,27 @@ class FrontController extends Controller
 
         return view('welcome', $data);
     }
-
     public function blogDetails($slug)
     {
         $data['article'] = Blog::where('slug', $slug)->firstOrFail();
         $data['relatedArticles'] = Blog::where('id', '!=', $data['article']->id)->get();
         $data['advertisements'] = Advertise::all(); // Fetch all advertisements
-
-        // Fetch all categories but will be limited in the view
         $data['categories'] = Category::all();
-
         $data['comments'] = Comment::where('blog_id', $data['article']->id)->get();
 
         // Update the read_at field for the blog
         $data['article']->read_at = now();
         $data['article']->save();
 
+        // Fetch recently viewed blogs
+        $data['recentlyViewedBlogs'] = Blog::whereNotNull('read_at')
+            ->orderBy('read_at', 'desc')
+            ->limit(4)
+            ->get();
+
         return view('front.blog_details', $data);
     }
+
 
     public function postComment(Request $request, $blogId)
     {
@@ -77,6 +80,12 @@ class FrontController extends Controller
     {
         $categories = Category::all();
         return view('front.about', ['categories' => $categories]);
+    }
+
+    public function faq()
+    {
+        $categories = Category::all();
+        return view('front.faq', ['categories' => $categories]);
     }
 
     //contact form submission 

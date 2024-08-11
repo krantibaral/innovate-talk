@@ -66,50 +66,9 @@
                 </div>
 
             </div>
-            <div class="blog__description"> {!! $article->description !!}</div>
+            <div class="blog__description hidden"> {!! $article->description !!}</div>
 
-            {{-- <span class="quote hidden">
-            Lining concealed back zip fasten swing style high waisted double
-            layer full pattern floral creating your app package.
-            <img src="assets/images/quotes.png" alt="" loading="lazy">
-            <div class="user__profile">
-                <p>By <span class="user__name"> Joshep Mathew </span></p>
-            </div>
-        </span> --}}
-
-            {{-- <p class="blog__description hidden">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam quam illo
-            in
-            repellat, nesciunt saepe? Magni repellendus rerum eveniet fugiat pariatur, et, porro, tenetur quo impedit
-            aliquid perspiciatis accusantium quod!</p>
-
-        <ul class="key__points hidden">
-            <li class="hidden">Once you have installed the App Studio app in your Teams client</li>
-            <li class="hidden">App Studio will guide you through</li>
-            <li class="hidden">Web services up and running, you’ll need to create an app package that can be distributed
-                and
-                installed</li>
-        </ul>
-
-        <h4 class="sub__blog__title hidden">Working Process</h4>
-        <p class="blog__description hidden">He gave the example of a plumber sending an invoice, and how they can tell
-            if
-            someone
-            starts to create an invoice and can’t make it through the whole process. For a small business entrepreneur,
-            “that’s a big deal because that means they’re not going to get paid, which means that tuition payment for
-            their
-            kid in college may be in jeopardy. So we take that really, really seriously hihihih.”</p>
-        <p class="blog__description hidden">Are looking beyond idealization stage to, at the very least, beta, and for
-            companies
-            that are corporate-ready.
-            Retailers want to see it all, so they usually have not precisely identified one tech they want to focus on.
-            Visual search and fit-tech are definitely trends.</p> --}}
-
-            {{-- <div class="blog__details__image">
-            <img class="hidden" src="{{ asset('assets/images/Article_image2.jpg') }}" alt="" loading="lazy">
-            <img class="hidden" src="{{ asset('assets/images/Article_image3.jpg') }}" alt="" loading="lazy">
-            <img class="hidden" src="{{ asset('assets/images/Article_image4.jpg') }}" alt="" loading="lazy">
-        </div> --}}
-
+     
 
             @foreach ($advertisements as $advertisement)
                 <section class="advertisement__section1">
@@ -131,10 +90,10 @@
             <section class="comment__container">
                 <div class="comment__previews">
                     @foreach ($comments as $comment)
-                        <div class="comment__card">
+                        <div class="comment__card hidden">
                             <div class="comment__head">
                                 <div class="comment__user__profile">
-                                    <i class="fas fa-user-circle" style="font-size: 30px;"></i>
+                                    <i class="fas fa-user-circle" style="font-size: 30px; padding-right: 20px;"></i>
 
                                     <div class="user__detail">
                                         <p class="user__name">{{ $comment->name }}</p>
@@ -184,96 +143,35 @@
         </section>
 
 
-        <main class="chamber hidden">
+        <main class="chamber">
             <section class="wrapper">
-                <h3 class="card__headline hidden">Most popular</h3>
-                <section class="card__container">
+                <h3 class="card__headline">Most popular</h3>
+                <section class="card__container ">
+                    @foreach ($recentlyViewedBlogs as $blog)
+                        <article class="card hidden">
+                            <figure class="card__image">
+                                <a href="{{ route('blog_details', $blog->slug) }}">
+                                    <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" />
+                                </a>
+                            </figure>
 
-                    <!-- Recently card 1 -->
-                    <article class="card hidden">
-                        <figure class="card__image">
-                            <a href="blog_details_premium.html">
-                                <img src="assets/images/Article_image1.jpg" alt="Office environment" loading="lazy" />
-                            </a>
-                        </figure>
+                            <div class="card__body">
+                                <p class="category">{{ $blog->category->name }}</p>
+                                <p class="upload__date">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    {{ $blog->created_at->format('F j, Y') }}
+                                </p>
 
-                        <div class="card__body">
-                            <p class="category">Technology</p>
-                            <p class="upload__date">
-                                <i class="fa-regular fa-calendar-days"></i>
-                                May 5th 2004
-                            </p>
-
-                            <p class="card__title">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, quia.
-                            </p>
-                        </div>
-                    </article>
-                    <!-- End of news card -->
-
-                    <article class="card hidden">
-                        <figure class="card__image">
-                            <a href="blog_details_premium.html">
-                                <img src="assets/images/Article_image2.jpg" alt="Office environment" loading="lazy" />
-                            </a>
-                        </figure>
-
-                        <div class="card__body">
-                            <p class="category">Technology</p>
-                            <p class="upload__date">
-                                <i class="fa-regular fa-calendar-days"></i>
-                                May 5th 2004
-                            </p>
-                            <p class="card__title">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, quia.
-                            </p>
-
-
-                        </div>
-                    </article>
-
-                    <article class="card hidden">
-                        <figure class="card__image">
-                            <a href="blog_details_premium.html">
-                                <img src="assets/images/Article_image3.jpg" alt="Office environment" loading="lazy" />
-                            </a>
-                        </figure>
-                        <div class="card__body">
-                            <p class="category">Technology</p>
-                            <p class="upload__date">
-                                <i class="fa-regular fa-calendar-days"></i>
-                                May 5th 2004
-                            </p>
-                            <p class="card__title">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, quia.
-                            </p>
-
-
-                        </div>
-                    </article>
-
-                    <article class="card hidden">
-                        <figure class="card__image">
-                            <a href="blog_details_premium.html">
-                                <img src="assets/images/Article_image4.jpg" alt="Office environment" loading="lazy" />
-                            </a>
-                        </figure>
-
-                        <div class="card__body">
-                            <p class="category">Technology</p>
-                            <p class="upload__date">
-                                <i class="fa-regular fa-calendar-days"></i>
-                                May 5th 2004
-                            </p>
-                            <p class="card__title">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores, quia.
-                            </p>
-
-
-                        </div>
-                    </article>
+                                <p class="card__title">
+                                    {{ $blog->title }}
+                                </p>
+                            </div>
+                        </article>
+                    @endforeach
                 </section>
+            </section>
         </main>
+
 
         @foreach ($advertisements as $advertisement)
             <section class="advertisement__section1 hidden">
