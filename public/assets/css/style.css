@@ -713,7 +713,7 @@ body {
 .chamber>.wrapper>.card__container {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
 
@@ -882,7 +882,7 @@ body {
 .advertisement__section2>img {
     width: 100%;
     height: inherit;
-    object-fit: fill ;
+    object-fit: fill;
 }
 
 /* ADVERTISMENT SETION CSS ENDS HERE */
@@ -1380,13 +1380,14 @@ body {
 }
 
 .blog__details>.blog__description {
-    position: relative !important;
-    width: 80% !important;
-    height: fit-content !important;
-    margin: 10px auto !important;
-    text-align: justify !important;
-    line-height: 1.6 !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    /* Centering horizontally if needed */
+    width: 100% !important;
+    box-sizing: border-box;
+    /* Ensures padding is included within width */
 }
+
 
 /*  This CSS overrides the default Summernote styles to apply custom styles */
 .elementor-section {
@@ -2831,13 +2832,13 @@ label>.star {
         flex-wrap: wrap;
     }
 
-     /* FAQ CSS SCREEN 768 */
+    /* FAQ CSS SCREEN 768 */
 
-     .faq-panel > .title {
+    .faq-panel>.title {
         font-size: 1.8rem;
     }
 
-    .faq-panel > .sub-title {
+    .faq-panel>.sub-title {
         width: 100%;
         font-size: 1rem;
     }

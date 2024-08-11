@@ -30,6 +30,7 @@ Route::get('/', [FrontController::class, 'index'])->name('welcome');
 Route::get('/blog_details/{id}', [FrontController::class, 'blogDetails'])->name('blog_details');
 Route::post('/blog/{blogId}/comment', [FrontController::class, 'postComment'])->name('blog.comment');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
+Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
 Route::post('/contact-submit', [FrontController::class, 'sendEmail'])->name('contact-submit');
 
 Auth::routes();
