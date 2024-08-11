@@ -66,9 +66,8 @@
                 </div>
 
             </div>
-            <p class="blog__description hidden"> {!! $article->description !!}</p>
+            <div class="blog__description hidden"> {!! $article->description !!}</div>
 
-     
 
             @foreach ($advertisements as $advertisement)
                 <section class="advertisement__section1">
@@ -82,6 +81,33 @@
                 <li class="tag__name hidden">UX</li>
             </div>
 
+
+            <section class="faq-panel hidden">
+                <h2 class="title">Frequently Asked Question</h2>
+                <p class="sub-title">Do you need some help with something or do you have some questions ?</p>
+            
+                <section class="faq-container">
+                  <div class="faq-item">
+                    <h3 class="faqIcon" data-image="url(Assets/Icons/Add-Circle--Streamline-Ultimate.png)">Is it possible to subscribe to the app annually?</h3>
+
+                    <p class="faq-answer">
+                      Yes of course, just send us an email at contact@bookapp.com with a little reason of why you want to cancel
+                      your
+                      subscription and you will get a refund between 1-2 business days.
+                    </p>
+                  </div>
+            
+                  <div class="faq-item">
+                    <h3>Is it possible to cancel my subscription?</h3>
+                    <p class="faq-answer">
+                      Yes of course, just send us an email at contact@bookapp.com with a little reason of why you want to cancel
+                      your
+                      subscription and you will get a refund between 1-2 business days.
+                    </p>
+                  </div>
+                </section>
+              </section>
+
             <div class="new__page hidden">
                 <button class="previous__page">Prev Post <span>Tips on Minimalist</span></button>
                 <button class="next__page">Next Post <span>Less is more</span></button>
@@ -90,10 +116,10 @@
             <section class="comment__container">
                 <div class="comment__previews">
                     @foreach ($comments as $comment)
-                        <div class="comment__card">
+                        <div class="comment__card hidden">
                             <div class="comment__head">
                                 <div class="comment__user__profile">
-                                    <i class="fas fa-user-circle" style="font-size: 30px;"></i>
+                                    <i class="fas fa-user-circle" style="font-size: 30px; padding-right: 20px;"></i>
 
                                     <div class="user__detail">
                                         <p class="user__name">{{ $comment->name }}</p>
@@ -146,9 +172,9 @@
         <main class="chamber">
             <section class="wrapper">
                 <h3 class="card__headline">Most popular</h3>
-                <section class="card__container">
+                <section class="card__container ">
                     @foreach ($recentlyViewedBlogs as $blog)
-                        <article class="card">
+                        <article class="card hidden">
                             <figure class="card__image">
                                 <a href="{{ route('blog_details', $blog->slug) }}">
                                     <img src="{{ $blog->getImage() }}" alt="{{ $blog->title }}" />

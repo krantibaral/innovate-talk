@@ -1383,25 +1383,68 @@ body {
     padding: 0 !important;
     margin: 0 auto !important;
     /* Centering horizontally if needed */
-    width: 100% !important;
+    width: 80% !important;
     box-sizing: border-box;
     /* Ensures padding is included within width */
 }
 
 
 /*  This CSS overrides the default Summernote styles to apply custom styles */
-.elementor-section {
-    width: 95%;
+.elementor-section, .blog__details>.blog__description>p,.blog__details>.blog__description>h3 {
+    width: 100%;
     height: fit-content;
     background-color: #fff !important;
-    margin: auto;
-    margin-bottom: clamp(10px, 2vw, 20px);
     z-index: 1;
     display: flex;
     flex-wrap: wrap;
     font-family: 'Times New Roman', Times, serif !important;
     line-height: 1.6;
     text-align: justify !important;
+}
+
+.blog__details>.blog__description>h1{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111111;
+}
+
+.blog__details>.blog__description>h2{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111111;
+}
+
+.blog__details>.blog__description>h3{
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #111111;
+}
+
+.blog__details>.blog__description>:where(h4,h5,h6){
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111111;
+}
+
+.elementor-column,
+.elementor-widget-wrap {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and borders are included in width */
+    overflow: hidden; /* Hides any overflow */
+}
+
+element.style {
+    border-radius: 0px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    max-width: 100%!important;
+}
+
+.elementor-section>div {
+    max-width: 100%!important;
 }
 
 .blog__details>.summary__premium::after {
@@ -1861,7 +1904,7 @@ body {
     width: 100%;
     height: 100%;
     margin: 0 10px 10px 10px;
-    object-fit: cover;
+    object-fit: fill;
     transition: 0.5s linear;
 }
 
@@ -2497,7 +2540,6 @@ label>.star {
     padding: 10px 0;
 }
 
-
 /* MEDIA SCREEN FOR 1200px */
 
 @media (max-width: 1200px) {
@@ -2785,7 +2827,7 @@ label>.star {
     .blog__details>.quote,
     .blog__details>.key__points,
     .blog__details>.sub__blog__title {
-        width: 95%;
+        width: 95% !important;
     }
 
     /* RESIZE OF SUBSCRIBTION CARD CONTAINER     */
