@@ -1390,17 +1390,38 @@ body {
 
 /*  This CSS overrides the default Summernote styles to apply custom styles */
 .elementor-section {
-    width: 95%;
+    width: 100%;
     height: fit-content;
     background-color: #fff !important;
-    margin: auto;
-    margin-bottom: clamp(10px, 2vw, 20px);
+    /* margin: auto; */
+    /* margin-bottom: clamp(10px, 2vw, 20px); */
     z-index: 1;
     display: flex;
     flex-wrap: wrap;
     font-family: 'Times New Roman', Times, serif !important;
     line-height: 1.6;
     text-align: justify !important;
+}
+
+.elementor-column,
+.elementor-widget-wrap {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and borders are included in width */
+    overflow: hidden; /* Hides any overflow */
+}
+
+element.style {
+    border-radius: 0px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    max-width: 100%!important;
+}
+
+.elementor-section>div {
+    max-width: 100%!important;
 }
 
 .blog__details>.summary__premium::after {
@@ -2496,7 +2517,6 @@ label>.star {
     padding: 10px 0;
 }
 
-
 /* MEDIA SCREEN FOR 1200px */
 
 @media (max-width: 1200px) {
@@ -2784,7 +2804,7 @@ label>.star {
     .blog__details>.quote,
     .blog__details>.key__points,
     .blog__details>.sub__blog__title {
-        width: 95%;
+        width: 95% !important;
     }
 
     /* RESIZE OF SUBSCRIBTION CARD CONTAINER     */

@@ -66,7 +66,7 @@
                 </div>
 
             </div>
-            <p class="blog__description"> {!! $article->description !!}</p>
+            <div class="blog__description"> {!! $article->description !!}</div>
 
             {{-- <span class="quote hidden">
             Lining concealed back zip fasten swing style high waisted double
