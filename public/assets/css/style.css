@@ -2582,11 +2582,12 @@ label>.star {
     }
 
     .navagation>.nav__list>ul:nth-last-child(1)>li>.dropdown {
-        box-shadow: 5px 5px 10px #d6d4d4, -5px -5px 10px #d6d4d4;
+        position: static;
+        /* box-shadow: 5px 5px 10px #d6d4d4, -5px -5px 10px #d6d4d4; */
         left: clamp(21vh, 45vw, 24vh);
-        /* Using clamp for left positioning */
         top: 3vh;
-        width: calc(90% - 135px);
+        width: calc(130% - 135px);
+        transition: 1s ease-in-out;
     }
 
     .navagation>.nav__list>ul>li>.dropdown>li {
