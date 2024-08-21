@@ -11,7 +11,7 @@
     <nav class="nav__list">
         <ul>
             {{-- <li><a href="#">News & Launches</a></li> --}}
-            @foreach ($categories->take(8) as $category)
+            @foreach ($categories->take(6) as $category)
                 <li>
                     <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
                 </li>
