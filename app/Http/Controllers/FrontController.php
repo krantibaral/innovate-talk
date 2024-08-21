@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Advertise;
+use App\Models\FAQ;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
@@ -46,7 +47,8 @@ class FrontController extends Controller
         // Update the read_at field for the blog
         $data['article']->read_at = now();
         $data['article']->save();
-
+        // Fetch FAQs related to this blog
+        $data['faqs'] = FAQ::where('blog_id', $data['article']->id)->get();
         // Fetch recently viewed blogs
         $data['recentlyViewedBlogs'] = Blog::whereNotNull('read_at')
             ->orderBy('read_at', 'desc')
