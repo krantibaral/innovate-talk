@@ -83,6 +83,11 @@ class FrontController extends Controller
         $categories = Category::all();
         return view('front.about', ['categories' => $categories]);
     }
+    public function category()
+    {
+        $categories = Category::all();
+        return view('front.category',['categories' => $categories]);
+    }
 
     public function faq()
     {
