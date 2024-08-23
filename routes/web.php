@@ -31,7 +31,7 @@ Route::get('/blog_details/{id}', [FrontController::class, 'blogDetails'])->name(
 Route::post('/blog/{blogId}/comment', [FrontController::class, 'postComment'])->name('blog.comment');
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
-Route::get('/category', [FrontController::class, 'category'])->name('category');
+Route::get('/category/{name}', [FrontController::class, 'category'])->name('category');
 Route::post('/contact-submit', [FrontController::class, 'sendEmail'])->name('contact-submit');
 
 Auth::routes();

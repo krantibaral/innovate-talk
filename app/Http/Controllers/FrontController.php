@@ -83,11 +83,29 @@ class FrontController extends Controller
         $categories = Category::all();
         return view('front.about', ['categories' => $categories]);
     }
-    public function category()
+    public function category(Request $request)
     {
+        // Fetch the category by name from the query string
+        $name = $request->query('name');
+        $category = Category::where('name', $name)->firstOrFail();
+
+        // Fetch blogs related to the category
+        $blogs = Blog::where('category_id', $category->id)->get();
+
+        // Fetch other necessary data
         $categories = Category::all();
-        return view('front.category',['categories' => $categories]);
+        $advertisements = Advertise::all();
+
+        // Pass the data to the view
+        return view('front.category', [
+            'category' => $category,
+            'blogs' => $blogs,
+            'categories' => $categories,
+            'advertisements' => $advertisements,
+        ]);
     }
+
+
 
     public function faq()
     {

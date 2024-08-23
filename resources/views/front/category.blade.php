@@ -8,7 +8,7 @@
         </figure>
 
         <div class="preview__details">
-            <h2 class="category__title">Technology</h2>
+            <h2 class="category__title">{{ $category->name }}</h2>
     </section>
     <!-- End of preview section -->
 

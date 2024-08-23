@@ -82,7 +82,7 @@
                 <h3 class="category__headline hidden">Favorites Categories</h3>
                 <ul>
                     @foreach ($categories as $category)
-                        <a href="{{route("category")}}">
+                    <a href="{{ route('category', ['name' => $category->name]) }}">
                             <li class="category__list hidden">{{ $category->name }}</li>
                         </a>
                     @endforeach
