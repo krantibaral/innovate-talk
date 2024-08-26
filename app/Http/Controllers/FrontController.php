@@ -83,27 +83,7 @@ class FrontController extends Controller
         $categories = Category::all();
         return view('front.about', ['categories' => $categories]);
     }
-    public function category(Request $request)
-    {
-        // Fetch the category by name from the query string
-        $name = $request->query('name');
-        $category = Category::where('name', $name)->firstOrFail();
 
-        // Fetch blogs related to the category
-        $blogs = Blog::where('category_id', $category->id)->get();
-
-        // Fetch other necessary data
-        $categories = Category::all();
-        $advertisements = Advertise::all();
-
-        // Pass the data to the view
-        return view('front.category', [
-            'category' => $category,
-            'blogs' => $blogs,
-            'categories' => $categories,
-            'advertisements' => $advertisements,
-        ]);
-    }
 
 
 
@@ -143,6 +123,38 @@ class FrontController extends Controller
 
         return redirect()->back();
     }
+
+    public function categoryDetails($slug)
+    {
+        // Fetch the category based on the slug
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $allCategories = Category::all();
+
+        // Fetch blogs associated with this category
+        $blogs = Blog::where('category_id', $category->id)->get();
+
+        // Fetch all advertisements
+        $advertisements = Advertise::all();
+
+        // Fetch recently viewed blogs
+        $recentlyViewedBlogs = Blog::whereNotNull('read_at')
+            ->orderBy('read_at', 'desc')
+            ->limit(4)
+            ->get();
+
+        // Prepare data to pass to the view
+        $data = [
+            'categories' => $allCategories,
+            'category' => $category,
+            'blogs' => $blogs,
+            'advertisements' => $advertisements,
+            'recentlyViewedBlogs' => $recentlyViewedBlogs,
+        ];
+
+        // Return the view with the data
+        return view('front.category', $data);
+    }
+
 
 
 }
