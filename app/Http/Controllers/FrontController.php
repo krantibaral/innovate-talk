@@ -18,16 +18,25 @@ class FrontController extends Controller
         // Fetch the most recent blog post
         $data['latestBlog'] = Blog::orderBy('created_at', 'desc')
             ->first(); // Get the latest one
+
+        // Fetch the next 3 most recent blog posts after the latest one
         $data['blogs'] = Blog::orderBy('created_at', 'desc')
-            ->skip(1) // Skip the first (latest) blog post
-            ->take(3) // Take the next 3 blog posts
+            ->skip(1)
+            ->take(3)
+            ->get();
+        // Fetch all blog posts excluding the first 4 most recent ones
+        $data['allBlogs'] = Blog::orderBy('created_at', 'desc')
+            ->skip(4)
+            ->take(PHP_INT_MAX) // Take all remaining blog posts
             ->get();
 
 
-
+        // Fetch all categories
         $data['categories'] = Category::all();
 
-        $data['advertisements'] = Advertise::all(); // Fetch all advertisements
+        // Fetch all advertisements
+        $data['advertisements'] = Advertise::all();
+
         // Fetch recently viewed blogs
         $data['recentlyViewedBlogs'] = Blog::whereNotNull('read_at')
             ->orderBy('read_at', 'desc')
@@ -36,6 +45,7 @@ class FrontController extends Controller
 
         return view('welcome', $data);
     }
+
     public function blogDetails($slug)
     {
         $data['article'] = Blog::where('slug', $slug)->firstOrFail();
