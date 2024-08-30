@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends BaseController
@@ -52,14 +53,22 @@ class CategoryController extends BaseController
             'name' => 'required|string|max:255',
         ]);
 
-        $data = $request->only(['name']);
+        // Generate a slug from the name
+        $slug = Str::slug($request->input('name'), '-');
 
+        // Prepare the data to be saved
+        $data = $request->only(['name']);
+        $data['slug'] = $slug; // Add the slug to the data array
+
+        // Create the category
         $category = Category::create($data);
 
+        // Handle the image upload if provided
         if ($request->hasFile('image')) {
             $category->addMediaFromRequest('image')->toMediaCollection();
         }
 
+        // Redirect to the index route
         return redirect()->route($this->indexRoute());
     }
 

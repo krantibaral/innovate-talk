@@ -32,6 +32,7 @@ Route::post('/blog/{blogId}/comment', [FrontController::class, 'postComment'])->
 Route::get('/about', [FrontController::class, 'about'])->name('about');
 Route::get('/faq', [FrontController::class, 'faq'])->name('faq');
 Route::post('/contact-submit', [FrontController::class, 'sendEmail'])->name('contact-submit');
+Route::get('/category/{slug}', [FrontController::class, 'categoryDetails'])->name('category.details');
 
 Auth::routes();
 
@@ -44,6 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('uploader', UploadController::class);
     Route::resource('categories', CategoryController::class);
+
     Route::resource('advertisements', AdvertiseController::class);
     Route::resource('comments', CommentController::class);
     Route::resource('banner_blogs', BannerBlogController::class);

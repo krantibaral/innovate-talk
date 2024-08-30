@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content_header')
-    <h1>Blogs</h1>
+    <h1>Advertisements</h1>
 @stop
 
 @push('styles')

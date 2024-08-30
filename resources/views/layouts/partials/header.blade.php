@@ -13,7 +13,7 @@
             {{-- <li><a href="#">News & Launches</a></li> --}}
             @foreach ($categories->take(6) as $category)
                 <li>
-                    <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
+                    <a href="{{ route('category.details', $category->slug) }}">{{ $category->name }}</a>
                 </li>
             @endforeach
 
@@ -25,8 +25,8 @@
                     <ul class="dropdown">
                         @foreach ($categories->skip(6) as $category)
                             <li>
-                                <a href="{{ url('categories/' . $category->slug) }}">{{ $category->name }}</a>
-                            </li>
+                                <a href="{{ route('category.details', $category->slug) }}">{{ $category->name }}</a>
+                                </li>
                         @endforeach
                     </ul>
                 </li>
