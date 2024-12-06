@@ -97,7 +97,7 @@
 <!-- Starting of slider section -->
 <section class="swiper mySwiper slider__container hidden">
     <div class="swiper-wrapper">
-        @foreach ($blogs as $blog)
+        @foreach ($allBlogs as $blog)
             <!-- Slide -->
             <section class="swiper-slide news__slider">
                 <figure class="news__slider__image">

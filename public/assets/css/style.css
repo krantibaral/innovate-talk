@@ -483,6 +483,8 @@ body {
 
 .wrapper>.news__container>.news__card>.news__card__body>.news__title {
     margin: 10px 0;
+    font-size: clamp(1rem, 6vh, 1.4rem);
+    font-weight: bolder;
 }
 
 
