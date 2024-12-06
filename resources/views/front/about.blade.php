@@ -7,7 +7,7 @@
         </figure>
 
         <div class="company__details">
-            <h1 class="hidden company__name">Able Innovations</h1>
+            <h1 class="hidden company__name">Innovate Talk</h1>
             <p class="hidden slogan">Enhance your knowledge to next Level</p>
             <button class="hidden explore__btn">
                 <a href="{{ route('welcome') }}">Explore Now</a>
